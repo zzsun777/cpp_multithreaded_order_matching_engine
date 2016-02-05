@@ -1,10 +1,9 @@
-#ifndef __QUEUE_MPMC_H__
-#define __QUEUE_MPMC_H__
+#ifndef _QUEUE_MPMC_
+#define _QUEUE_MPMC_
 
 #include <boost/noncopyable.hpp>
 #include <mutex>
 #include <memory/aligned_container_policy.h>
-using namespace std;
 
 namespace concurrent
 {

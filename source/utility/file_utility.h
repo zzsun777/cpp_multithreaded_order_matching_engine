@@ -1,5 +1,5 @@
-#ifndef __FILE_UTILITY__
-#define __FILE_UTILITY__
+#ifndef _FILE_UTILITY_
+#define _FILE_UTILITY_
 
 #include <string>
 

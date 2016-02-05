@@ -1,5 +1,5 @@
-#ifndef __HARDWARE_BREAKPOINT__
-#define __HARDWARE_BREAKPOINT__
+#ifndef _HARDWARE_BREAKPOINT_
+#define _HARDWARE_BREAKPOINT_
 
 #ifdef __linux__
 #include <cstdlib>

@@ -1,5 +1,5 @@
-#ifndef __STRING_UTILITY__
-#define __STRING_UTILITY__
+#ifndef _STRING_UTILITY_
+#define _STRING_UTILITY_
 
 #include <cctype>
 #include <string>

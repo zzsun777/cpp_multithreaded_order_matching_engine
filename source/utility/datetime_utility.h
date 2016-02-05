@@ -1,5 +1,5 @@
-#ifndef __DATE_TIME_UTILITY__
-#define __DATE_TIME_UTILITY__
+#ifndef _DATE_TIME_UTILITY_
+#define _DATE_TIME_UTILITY_
 
 #include <string>
 #include <chrono>

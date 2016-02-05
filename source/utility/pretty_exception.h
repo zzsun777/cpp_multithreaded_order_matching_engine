@@ -17,8 +17,6 @@
 #define NEW_LINE "\r\n"
 #elif __linux__
 #define NEW_LINE "\n"
-#elif __APPLE__
-#define NEW_LINE "\r"
 #else
 #define NEW_LINE "\n"
 #endif
@@ -30,6 +28,7 @@
 #define STRINGIFY(x) STRINGIFY_DETAIL(x)
 #define PRETTY_EXCEPTION_LOCATION "File : "  __FILE__ NEW_LINE "Line:" STRINGIFY(__LINE__) 
 
+//Following .Net/Java exception message convention , first the message then its details...
 #define THROW_PRETTY_EXCEPTION(msg) throw std::runtime_error( (std::string((msg).c_str() ) +  NEW_LINE PRETTY_EXCEPTION_LOCATION).c_str() );
 
 #endif

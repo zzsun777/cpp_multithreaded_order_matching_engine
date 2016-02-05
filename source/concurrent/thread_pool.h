@@ -1,5 +1,5 @@
-#ifndef __THREAD_POOL_H__
-#define __THREAD_POOL_H__
+#ifndef _THREAD_POOL_
+#define _THREAD_POOL_
 
 #include <concurrent/task.h>
 #include <concurrent/thread.h>

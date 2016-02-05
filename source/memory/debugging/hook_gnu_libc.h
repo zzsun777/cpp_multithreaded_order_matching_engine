@@ -1,5 +1,5 @@
-#ifndef __HOOK_GNU_LIBC_H__
-#define __HOOK_GNU_LIBC_H__
+#ifndef _HOOK_GNU_LIBC_
+#define _HOOK_GNU_LIBC_
 
 #include <cstddef>
 

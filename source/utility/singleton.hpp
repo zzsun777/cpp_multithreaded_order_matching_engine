@@ -1,5 +1,5 @@
-#ifndef __SINGLETON__
-#define __SINGLETON__
+#ifndef _SINGLETON_
+#define _SINGLETON_
 
 #include <boost/noncopyable.hpp>
 

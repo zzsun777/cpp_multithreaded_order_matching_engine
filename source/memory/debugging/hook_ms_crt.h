@@ -1,5 +1,5 @@
-#ifndef __HOOK_MS_CRT_H__
-#define __HOOK_MS_CRT_H__
+#ifndef _HOOK_MS_CRT_
+#define _HOOK_MS_CRT_
 
 #include <cstddef>
 

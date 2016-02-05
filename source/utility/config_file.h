@@ -1,5 +1,5 @@
-#ifndef __CONFIG_FILE_H__
-#define __CONFIG_FILE_H__
+#ifndef _CONFIG_FILE_
+#define _CONFIG_FILE_
 
 #include<string>
 #include<vector>

@@ -135,7 +135,7 @@ For Linux, you need GNU Lib C runtime and libxml2.
 	
 	directory names					lower_case_word
 	file names 						lower_case_word
-	include guards 					__HEADER_H__
+	include guards 					_HEADER_
 	macros							UPPER_CASE_WORD
 	enums							UPPER_CASE_WORD
 	namespace names 				lower_case_word

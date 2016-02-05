@@ -1,5 +1,5 @@
-#ifndef __ALIGNED_ALLOCATOR__
-#define __ALIGNED_ALLOCATOR__
+#ifndef _ALIGNED_ALLOCATOR_
+#define _ALIGNED_ALLOCATOR_
 
 #include <cstddef>
 #include <new>

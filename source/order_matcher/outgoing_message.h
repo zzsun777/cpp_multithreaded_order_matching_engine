@@ -1,5 +1,5 @@
-#ifndef __OUTGOING_MESSAGE__
-#define __OUTGOING_MESSAGE__
+#ifndef _OUTGOING_MESSAGE_
+#define _OUTGOING_MESSAGE_
 
 #include <string>
 #include "order.h"

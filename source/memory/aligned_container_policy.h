@@ -1,5 +1,5 @@
-#ifndef __ALIGNED_CONTAINER_POLICY__
-#define __ALIGNED_CONTAINER_POLICY__
+#ifndef _ALIGNED_CONTAINER_POLICY_
+#define _ALIGNED_CONTAINER_POLICY_
 
 #include <memory/aligned.hpp>
 #include <type_traits>

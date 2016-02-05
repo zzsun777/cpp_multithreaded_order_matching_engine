@@ -1,5 +1,5 @@
-#ifndef __OUTGOING_MESSAGE_PROCESSOR__
-#define __OUTGOING_MESSAGE_PROCESSOR__
+#ifndef _OUTGOING_MESSAGE_PROCESSOR_
+#define _OUTGOING_MESSAGE_PROCESSOR_
 
 #include <cassert>
 #include <string>

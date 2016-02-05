@@ -1,5 +1,5 @@
-#ifndef __INCOMING_MESSAGE_DISPATCHER__
-#define __INCOMING_MESSAGE_DISPATCHER__
+#ifndef _INCOMING_MESSAGE_DISPATCHER_
+#define _INCOMING_MESSAGE_DISPATCHER_
 
 #include <cassert>
 #include <string>

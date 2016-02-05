@@ -1,5 +1,5 @@
-#ifndef __ALIGNED_MEMORY_H__
-#define __ALIGNED_MEMORY_H__
+#ifndef _ALIGNED_MEMORY_
+#define _ALIGNED_MEMORY_
 
 #include "cache_line.h"
 #include <cstddef>

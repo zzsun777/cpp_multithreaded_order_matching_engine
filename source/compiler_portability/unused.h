@@ -1,5 +1,5 @@
-#ifndef __UNUSED__
-#define __UNUSED__
+#ifndef _UNUSED_
+#define _UNUSED_
 
 //To avoid unused variable warnings
 #if defined(__GNUC__)

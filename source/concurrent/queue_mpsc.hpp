@@ -1,11 +1,9 @@
-#ifndef __QUEUE_MPSC_H__
-#define __QUEUE_MPSC_H__
-
+#ifndef _QUEUE_MPSC_
+#define _QUEUE_MPSC_
 
 #include <boost/noncopyable.hpp>
 #include <mutex>
 #include <condition_variable>
-
 #include <memory/aligned_container_policy.h>
 
 namespace concurrent

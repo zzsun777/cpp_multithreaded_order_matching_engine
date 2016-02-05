@@ -1,5 +1,5 @@
-#ifndef __BRANCH_PREDICTOR_HINT__
-#define __BRANCH_PREDICTOR_HINT__
+#ifndef _BRANCH_PREDICTOR_HINT_
+#define _BRANCH_PREDICTOR_HINT_
 
 #if defined(_MSC_VER)
 //No implementation provided for MSVC :

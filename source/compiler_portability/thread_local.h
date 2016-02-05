@@ -1,5 +1,5 @@
-#ifndef __THREAD_LOCAL__
-#define __THREAD_LOCAL__
+#ifndef _THREAD_LOCAL_
+#define _THREAD_LOCAL_
 
 #if defined(_MSC_VER)
 #if MSC_VER<=1800

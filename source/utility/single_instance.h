@@ -1,5 +1,5 @@
-#ifndef __SINGLE_INSTANCE_H__
-#define __SINGLE_INSTANCE_H__
+#ifndef _SINGLE_INSTANCE_
+#define _SINGLE_INSTANCE_
 
 #include <cstdint>
 #include <string>

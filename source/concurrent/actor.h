@@ -1,11 +1,9 @@
-#ifndef __ACTOR_H__
-#define __ACTOR_H__
+#ifndef _ACTOR_
+#define _ACTOR_
 
 #include <string>
 #include <memory>
 #include <utility>
-using namespace std;
-
 #include <atomic>
 #include "thread.h"
 

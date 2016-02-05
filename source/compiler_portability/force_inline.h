@@ -1,5 +1,5 @@
-#ifndef __FORCE_INLINE__
-#define __FORCE_INLINE__
+#ifndef _FORCE_INLINE_
+#define _FORCE_INLINE_
 
 #if defined(_MSC_VER)
 #define FORCE_INLINE __forceinline

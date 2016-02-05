@@ -1,5 +1,5 @@
-#ifndef __RING_BUFFER_SPSC_LOCKFREE_H__
-#define __RING_BUFFER_SPSC_LOCKFREE_H__
+#ifndef _RING_BUFFER_SPSC_LOCKFREE_
+#define _RING_BUFFER_SPSC_LOCKFREE_
 
 #include <cstddef>
 #include <atomic>

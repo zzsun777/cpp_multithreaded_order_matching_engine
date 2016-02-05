@@ -1,5 +1,5 @@
-#ifndef __RING_BUFFER_MPMC_H__
-#define __RING_BUFFER_MPMC_H__
+#ifndef _RING_BUFFER_MPMC_
+#define _RING_BUFFER_MPMC_
 
 #include <cstddef>
 #include <mutex>

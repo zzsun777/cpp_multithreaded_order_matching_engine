@@ -1,5 +1,5 @@
-#ifndef __ORDER_QUEUE__
-#define  __ORDER_QUEUE__
+#ifndef _ORDER_QUEUE_
+#define _ORDER_QUEUE_
 
 #include "order.h"
 #include "order_book.h"

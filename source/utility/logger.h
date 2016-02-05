@@ -1,5 +1,5 @@
-#ifndef __LOGGER__
-#define __LOGGER__
+#ifndef _LOGGER_
+#define _LOGGER_
 
 #include <boost/format.hpp>
 

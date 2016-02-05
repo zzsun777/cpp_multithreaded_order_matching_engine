@@ -1,5 +1,5 @@
-#ifndef __ALIGN_AS__
-#define __ALIGN_AS__
+#ifndef _ALIGN_AS_
+#define _ALIGN_AS_
 
 // Use C++11 if available , otherwise compiler extensions
 #if defined(_MSC_VER)
