@@ -3,7 +3,7 @@ http://en.wikipedia.org/wiki/Public_domain_software
 
 ===========================================================================
 			
-**The project description :** A multithreaded limit order matching engine written in C++11 using FIX protocol 4.2 . 
+**The project description and technical information :** A multithreaded limit order matching engine written in C++11 using FIX protocol 4.2 . 
 
 - It targets both Linux ( tested on CentOS and Ubuntu ) and Windows systems ( tested on Windows 8.1).
 
@@ -160,3 +160,22 @@ You will also need to have "quickfix_FIX42.xml" and "quickfix_server.cfg" files 
 		
 **Precompiled header file usage :** On Windows , the project is using /FI ( Force include parameter, therefore no need to include the pch header everywhere ) and specified the pch header to be precompiled_header.h. Note that this breaks edit-and-continue in Visual Studio.
 For Linux , there is pch rule to enable it in the makefile ( build/linux/Makefile) , but currently that rule is not being used since it doesn`t appear as it is doing much improvement as on Windows.
+
+**Considerations for future :**
+Compiler/C++ : Upgrading supported compiler versions and enabling use of C++14/C++17
+
+Adding other order types ( market orders, stop loss order) , order update and market data request support, TIF support
+
+Exchange connectivity : Suppoty more protocols and/or FIX engines
+
+Memory : 3rd party memory allocators support : jemalloc, intelTBB, tcMalloc, Lockless
+
+Concurrency : Lockfree containers
+
+Concurrency : Experiment order book processing on GPU with CUDA
+
+New feature : Event broadcasting and sample feed handlers
+
+New feature : Visualisation with OpenGL/Vulkan
+
+Solaris support
