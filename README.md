@@ -3,7 +3,7 @@ http://en.wikipedia.org/wiki/Public_domain_software
 
 ===========================================================================
 			
-**The project description :** A multithreaded limit order matching engine written in C++11. 
+**The project description :** A multithreaded limit order matching engine written in C++11 using FIX protocol 4.2 . 
 
 - It targets both Linux ( tested on CentOS and Ubuntu ) and Windows systems ( tested on Windows 8.1).
 
@@ -12,8 +12,6 @@ http://en.wikipedia.org/wiki/Public_domain_software
 - It supports GCC4.8 and MSVC120 (VS2013). See "source/compiler_portability" 
 
 - Additionally used GoogleTest for unit testing, Bash for Linux test scripts and Powershell for Windows test scripts.
-  
-- Uses FIX protocol ( 4.2 ) .
 
 Detailed articles about the project and its implementation details will be available in my blog at www.nativecoding.wordpress.com.
 						
