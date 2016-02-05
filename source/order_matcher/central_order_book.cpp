@@ -4,7 +4,7 @@
 #include <boost/format.hpp>
 using namespace std;
 
-#define SINGLE_THREADED
+//#define SINGLE_THREADED
 
 #include <utility/stopwatch.h>
 using namespace utility;
