@@ -41,8 +41,11 @@ Each order book has a table for bids and another table for asks. Briefly the mul
 then it listens for incoming ask/bid orders. If the order type is not supported. It sends "rejected" message.
 	
 2. Central Order book has a thread pool
+
 		2.1. The thread pool will have N SPSC queues for N threads ( N = num of symbol ).
+		
 		2.2. Central Order book also has 1 MPMC queue for outgoing messages.
+		
 		2.3. When a new message arrives ( new order, or cancel ) from the FIX engine , it will be submitted to corresponding thread`s queue in the thread pool of the central order book.
 		
 3. Each thread in the thread pool will get message from their SPSC queue in the thread pool , and add them to corresponding order queue which is used by only itself
