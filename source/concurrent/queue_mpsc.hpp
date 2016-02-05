@@ -75,7 +75,7 @@ class QueueMPSC : public boost::noncopyable, AlignedContainerPolicy<T>
             std::unique_lock<std::mutex> l(m_mutex);
             m_noData.wait(l, [this](){return m_head->m_next != nullptr; });
             /////////////////////////////
-			//JUST SWAP THE POINTERS
+            //JUST SWAP THE POINTERS
             ret = m_head->m_next;
             m_head->m_next = nullptr;
             m_tail = m_head;

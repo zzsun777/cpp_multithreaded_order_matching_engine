@@ -163,13 +163,13 @@ For Linux , there is pch rule to enable it in the makefile ( build/linux/Makefil
 
 **TODO for near future :**
 
-Concurrency : Lockfree containers
+Concurrency : Lockfree containers , currently only SPSC bounded queue is lock free.
 
 Memory : 3rd party memory allocators support : jemalloc, intelTBB, tcMalloc, Lockless
 
 **Considerations for future :**
 
-Order matchinng : Adding other order types ( market orders, stop loss order) , order update and market data request support, TIF support
+Order matching : Adding other order types ( market orders, stop loss order) , order update and market data request support, TIF support
 
 Exchange connectivity : Support ITCH ( London Stock Exchange & NASDAQ ) and/or FIX engines , interested in using Libtrade : https://github.com/libtrading/libtrading
 

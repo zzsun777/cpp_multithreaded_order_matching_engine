@@ -20,10 +20,10 @@ class Singleton : public boost::noncopyable
             static T single_instance;
             return single_instance;
         }
-		
-	private :
-	
-		// Move ctor deletion
+        
+    private :
+    
+        // Move ctor deletion
         Singleton(Singleton&& other) = delete;
         // Move assignment operator deletion
         Singleton& operator=(Singleton&& other) = delete;

@@ -102,8 +102,8 @@ class IncomingMessageDispatcher : public Actor
             LOG_INFO("Incoming message dispatcher", "Thread exiting")
             return nullptr;
         }
-		
-	 private :
+        
+    private :
         order_matcher::CentralOrderBook* m_centralOrderBook;
         concurrent::QueueMPSC<IncomingMessage> m_queue;
         

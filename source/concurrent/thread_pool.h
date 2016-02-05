@@ -33,7 +33,7 @@ struct ThreadPoolArguments
     std::vector<std::string> m_threadNames;
     
     ThreadPoolArguments() 
-        : m_pinThreadsToCores(true), m_hyperThreading(false), m_workQueueSizePerThread{ DEFAULT_WORK_QUEUE_SIZE }, m_threadStackSize{0}
+    : m_pinThreadsToCores(true), m_hyperThreading(false), m_workQueueSizePerThread{ DEFAULT_WORK_QUEUE_SIZE }, m_threadStackSize{0}
     {}
 };
 
