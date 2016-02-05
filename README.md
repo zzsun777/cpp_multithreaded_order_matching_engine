@@ -7,9 +7,11 @@ http://en.wikipedia.org/wiki/Public_domain_software
 
 - It targets both Linux ( tested on CentOS and Ubuntu ) and Windows systems ( tested on Windows 8.1).
 
-- It uses STL,Boost and also platform specific APIs ( POSIX and WindowsAPIs) in some places, QuickFix for FIX protocol.
+- It uses STL,Boost and also platform specific APIs ( POSIX, a few NP POSIX calls and WindowsAPIs) in some places, QuickFix for FIX protocol.
 
--  Additionally used GoogleTest for unit testing, Bash for Linux test scripts and Powershell for Windows test scripts.
+- It supports GCC4.8 and MSVC120 (VS2013). See "source/compiler_portability" 
+
+- Additionally used GoogleTest for unit testing, Bash for Linux test scripts and Powershell for Windows test scripts.
   
 - Uses FIX protocol ( 4.2 ) .
 
