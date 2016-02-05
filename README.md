@@ -7,12 +7,13 @@ http://en.wikipedia.org/wiki/Public_domain_software
 
 - It targets both Linux ( tested on CentOS and Ubuntu ) and Windows systems ( tested on Windows 8.1).
 
-- It uses STL,Boost and also platform specific APIs ( POSIX and WindowsAPIs) in some places, QuickFix for FIX protocol 
-  Additionally used GoogleTest for unit testing, Bash for Linux test scripts and Powershell for Windows test scripts
-  
-- Uses FIX protocol (4.2)
+- It uses STL,Boost and also platform specific APIs ( POSIX and WindowsAPIs) in some places, QuickFix for FIX protocol.
 
-A more detailed explanation will be available in my blog soon at www.nativecoding.wordpress.com
+-  Additionally used GoogleTest for unit testing, Bash for Linux test scripts and Powershell for Windows test scripts.
+  
+- Uses FIX protocol ( 4.2 ) .
+
+Detailed articles about the project and its implementation details will be available in my blog at www.nativecoding.wordpress.com.
 						
 **Limit orders and order matching engines :** For limit orders please see : https://en.wikipedia.org/wiki/Order_%28exchange%29#Limit_order
 
