@@ -163,15 +163,15 @@ For Linux , there is pch rule to enable it in the makefile ( build/linux/Makefil
 
 **Considerations for future :**
 
-Compiler/C++ : Upgrading supported compiler versions and enabling use of C++14/C++17
-
-Adding other order types ( market orders, stop loss order) , order update and market data request support, TIF support
-
-Exchange connectivity : Support more protocols and/or FIX engines
+Concurrency : Lockfree containers
 
 Memory : 3rd party memory allocators support : jemalloc, intelTBB, tcMalloc, Lockless
 
-Concurrency : Lockfree containers
+Compiler support : Use of CMake, upgrading supported compiler versions and enabling use of C++14/C++17, experimental Clang and IntelC++Compiler
+
+Order matchinng : Adding other order types ( market orders, stop loss order) , order update and market data request support, TIF support
+
+Exchange connectivity : Support ITCH ( London Stock Exchange & NASDAQ ) and/or FIX engines , interested in using Libtrade : https://github.com/libtrading/libtrading
 
 Concurrency : Experiment order book processing on GPU with CUDA
 
@@ -179,4 +179,4 @@ New feature : Event broadcasting and sample feed handlers
 
 New feature : Visualisation with OpenGL/Vulkan
 
-Solaris support
+OS Support : Solaris
