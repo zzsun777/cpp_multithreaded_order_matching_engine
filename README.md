@@ -147,7 +147,7 @@ You will also need to have "quickfix_FIX42.xml" and "quickfix_server.cfg" files 
 	variable names					pascalCase
 	member variables starts with	m_
 
-**Source code indendantions and new line usage :**
+**Source code indentations and new line usage :**
 	
 	Space based no tabs ( This needs to be setup in VS )
 	By default Netbeans editor uses spaces for tabs

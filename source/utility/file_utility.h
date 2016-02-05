@@ -2,16 +2,12 @@
 #define _FILE_UTILITY_
 
 #include <string>
-
-/*
-#include <sstream>
-#include <iomanip>
 #include <fstream>
-*/
+
 #ifdef __linux__
 #include <sys/stat.h>
 #include <unistd.h>
-#include <stdio.h>
+#include <cstdio>
 #elif _WIN32
 #include <windows.h>
 #endif

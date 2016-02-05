@@ -58,6 +58,7 @@
 #include <malloc.h>
 #include <pthread.h>
 #include <netinet/in.h>
+#include <sys/stat.h>
 #endif
 // WINDOWS
 #ifdef _WIN32

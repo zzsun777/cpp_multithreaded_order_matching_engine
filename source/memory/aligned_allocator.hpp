@@ -13,13 +13,13 @@
 
 namespace memory
 {
-	
+    
 template <typename T, std::size_t alignment = CACHE_LINE_SIZE> 
 class AlignedAllocator
 {
     public:
         // The following will be the same for virtually all allocators.
-		using pointer = T*;
+        using pointer = T*;
         using const_pointer = const T *;
         using reference = T&;
         using const_reference = const T&;
