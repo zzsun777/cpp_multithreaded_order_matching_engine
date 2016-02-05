@@ -33,8 +33,10 @@ match the orders. And then it sends status reports back to the owners of the ord
 For general information about the trading systems and the order types , please see :
 http://www.investopedia.com/university/intro-to-order-types/
 
-**FIX protocol :** FIX ( Financial information exchange ) protocol is a session based TCP protocol that carries security transcation data.
-For more information , please see https://en.wikipedia.org/wiki/Financial_Information_eXchange
+**FIX ( Financial information exchange ) protocol :** It is a session based TCP protocol that carries financial security transcation data.
+
+For more information , please see https://en.wikipedia.org/wiki/Financial_Information_eXchange .
+
 For the time being, this projectis using opensource QuickFix engine and FIX specification 4.2.
 	
 **How multithreading is implemented for order matching:** The engine mainly consists of 2 parts : a FIX server/engine and the order matching layer.
@@ -46,11 +48,11 @@ then it listens for incoming ask/bid orders. If the order type is not supported.
 	
 2. Central Order book has a thread pool
 
-		2.1. The thread pool will have N SPSC queues for N threads ( N = num of symbol ).
+		- The thread pool will have N SPSC queues for N threads ( N = num of symbol ).
 		
-		2.2. Central Order book also has 1 MPMC queue for outgoing messages.
+		- Central Order book also has 1 MPMC queue for outgoing messages.
 		
-		2.3. When a new message arrives ( new order, or cancel ) from the FIX engine , it will be submitted to corresponding thread`s queue in the thread pool of the central order book.
+		- When a new message arrives ( new order, or cancel ) from the FIX engine, it will be submitted to corresponding thread`s queue in the thread pool of the central order book.
 		
 3. Each thread in the thread pool will get message from their SPSC queue in the thread pool , and add them to corresponding order queue which is used by only itself
 and eventually trigger the order matching process for that queue. At the end of the order matching , worker threads will submit messages ( FILLED or PARTIALLY FILLED ) to the outgoing messages queue 
@@ -98,11 +100,15 @@ For Linux, you need GNU Lib C runtime and libxml2.
    
    Under "test_functional" directory :
    
-		- Modify test_data.txt which has the orders to send to the engine as you wish.
-		- Modify  the arrays declared on top of client_automated_test.sh/client_automated_test.ps1 script files in order to configure the number of clients. You should provide a name for each client.
-		- For firing Linux test client(s), you can use client_automated_test.sh Bash script.
-		- For firing Windows test client(s), you can use client_automated_test.bat which drives client_automated_test.ps1 Powershell script.
-		- After firing the script, it will be executing all orders in test_data.txt file per client that is declared in the script file.
+		1. Modify test_data.txt which has the orders to send to the engine as you wish.
+		
+		2. Modify  the arrays declared on top of client_automated_test.sh/client_automated_test.ps1 script files in order to configure the number of clients. You should provide a name for each client.
+		
+		3. For firing Linux test client(s), you can use client_automated_test.sh Bash script.
+		
+		4. For firing Windows test client(s), you can use client_automated_test.bat which drives client_automated_test.ps1 Powershell script.
+		
+		5. After firing the script, it will be executing all orders in test_data.txt file per client that is declared in the script file.
 		
 **Unit testing :** The project uses GoogleTest 1.7. You can find a makefile and vcproj under "test_unit" directory.
 	
@@ -114,12 +120,14 @@ For Linux, you need GNU Lib C runtime and libxml2.
 			$ ./configure
 			$ make
 			$ sudo cp -a include/gtest /usr/include
+			
 			On CentOS
 			$ sudo cp -a lib/.libs/* /usr/lib64
+			
 			On Ubuntu
 			$ sudo cp -a lib/.libs/* /usr/lib/
 			
-			Then you can either use Makefile or Netbeans project files under test_unit directory.
+			Then you can either use Makefile or Netbeans project files under "test_unit" directory.
 
 **Building and running unit test on Windows :** You can use VisualStudio solution in "test_unit" directory.
 
