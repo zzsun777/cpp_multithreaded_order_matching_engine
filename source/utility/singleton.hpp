@@ -9,7 +9,7 @@ namespace utility
 template<typename T>
 class Singleton : public boost::noncopyable
 {
-    public:
+    public :
         static T& getInstance()
         {
             // Using Scott Meyers` singleton
@@ -20,6 +20,13 @@ class Singleton : public boost::noncopyable
             static T single_instance;
             return single_instance;
         }
+		
+	private :
+	
+		// Move ctor deletion
+        Singleton(Singleton&& other) = delete;
+        // Move assignment operator deletion
+        Singleton& operator=(Singleton&& other) = delete;
 };
 
 }
