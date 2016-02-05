@@ -1,5 +1,5 @@
-#ifndef __CLIENT_APPLICATION__
-#define __CLIENT_APPLICATION__
+#ifndef _CLIENT_APPLICATION_
+#define _CLIENT_APPLICATION_
 
 #include <boost/noncopyable.hpp>
 

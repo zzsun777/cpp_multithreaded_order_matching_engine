@@ -95,6 +95,9 @@ For Linux, you need GNU Lib C runtime and libxml2.
 		- HYPER_THREADING								if hyperthreading is off and pinning is on ,then it will pin threads to only cores with an even index
 		- CENTRAL_ORDER_BOOK_QUEUE_SIZE_PER_THREAD		Queue size per worker thread in the central order book`s thread pool
 		- LOG_BUFFER_SIZE								Maximum buffer size for the logging system as it is built on a ring buffer.
+		
+You will also need to have "quickfix_FIX42.xml" and "quickfix_server.cfg" files to be in the same directory with OME executable. You can find them in "bin" directory.
+
 
 **Functional testing :** There is a prebuilt executable for both Linux and Windows which can send specified ask/bid orders to the order matching engine.
    
