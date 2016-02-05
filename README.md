@@ -12,6 +12,7 @@ http://en.wikipedia.org/wiki/Public_domain_software
 A more detailed explanation will be available in my blog soon at www.nativecoding.wordpress.com
 						
 **Limit orders and order matching engines :** For limit orders please see : https://en.wikipedia.org/wiki/Order_%28exchange%29#Limit_order
+
 Basically a limit order is an order which you specify a maximum price for the security you want to buy. 
 As for the terminology a limit order to buy is called a "bid" and a limit order to sell is called an "ask".
 
@@ -40,21 +41,21 @@ Each order book has a table for bids and another table for asks. Briefly the mul
 then it listens for incoming ask/bid orders. If the order type is not supported. It sends "rejected" message.
 	
 2. Central Order book has a thread pool
-		- The thread pool will have N SPSC queues for N threads ( N = num of symbol ).
-		- Central Order book also has 1 MPMC queue for outgoing messages.
-		- When a new message arrives ( new order, or cancel ) from the FIX engine , it will be submitted to corresponding thread`s queue in the thread pool of the central order book.
+		2.1. The thread pool will have N SPSC queues for N threads ( N = num of symbol ).
+		2.2. Central Order book also has 1 MPMC queue for outgoing messages.
+		2.3. When a new message arrives ( new order, or cancel ) from the FIX engine , it will be submitted to corresponding thread`s queue in the thread pool of the central order book.
 		
 3. Each thread in the thread pool will get message from their SPSC queue in the thread pool , and add them to corresponding order queue which is used by only itself
 and eventually trigger the order matching process for that queue. At the end of the order matching , worker threads will submit messages ( FILLED or PARTIALLY FILLED ) to the outgoing messages queue 
 
 4. Outgoing message processor which is a MPMC queue will process the outgoing messages.
 
-**Build dependencies :** For Linux , the project is built and tested with GCC4.8. As for Windows it is using MSVC1200(VS2013).
+**Build dependencies :** For Linux , the project is built and tested with GCC4.8. As for Windows it is using MSVC1200(VS2013). In libraries side :
 
 - Boost 1.59 : using a compacted version by using the command below :
 				bcp --boost=c:\boost_1_59_0 shared_ptr scoped_ptr any optional tokenizer format c:\boost
 						
-- QuickFix & its requirements : libxml2-devel , http://www.quickfixengine.org/quickfix/doc/html/install.html
+- QuickFix & its requirements : libxml2-devel & http://www.quickfixengine.org/quickfix/doc/html/install.html
 
 **Runtime dependencies :** For Windows, you have to install MSVC120 runtime : https://www.microsoft.com/en-gb/download/details.aspx?id=40784
 For Linux, you need GNU Lib C runtime and libxml2.
@@ -64,7 +65,7 @@ For Linux, you need GNU Lib C runtime and libxml2.
 	cd build/linux
 	make debug  OR make release
 
-**How to build the project on Linux using Netbeans 8.0.2 C++ IDE: **
+**How to build the project on Linux using Netbeans 8.0.2 C++ IDE:**
 
 	Open Netbeans
 	Open project from project directory
@@ -91,6 +92,7 @@ For Linux, you need GNU Lib C runtime and libxml2.
 **Functional testing :** There is a prebuilt executable for both Linux and Windows which can send ask/bid orders to the order matching engine.
    
    Under "test_functional" directory :
+   
 		- Modify test_data.txt which has the orders to send to the engine
 		- Modify  the arrays declared on top of client_automated_test.sh/client_automated_test.ps1 script files in order to configure the number of clients. You should provide a name for each client.
 		- For firing Linux test client(s), you can use client_automated_test.sh.
@@ -125,7 +127,7 @@ For Linux, you need GNU Lib C runtime and libxml2.
 	variable names					pascalCase
 	member variables starts with	m_
 
-**Source code indendantions and new line usage :  **
+**Source code indendantions and new line usage :**
 	
 	space based no tabs ( This needs to be setup in VS )
 	By default Netbeans editor uses spaces for tabs
@@ -134,6 +136,7 @@ For Linux, you need GNU Lib C runtime and libxml2.
 	New lines : Unix CR only ( \n ) , VS can handle it even though Windows is \r\n
 
 **GCC warning level :** -Wall
+
 **MSVC warning level :** /W3
 		
 **Precompiled header file usage :** On Windows , using /FI ( Force include parameter, therefore no need to include it to everywhere ) and set precompiled header file settings ( precompiled header file ) Note that this breaks edit-and-continue.
