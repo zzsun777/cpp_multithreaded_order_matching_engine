@@ -32,7 +32,7 @@ Thread::~Thread()
         if ( isAlive() == true )
         {
             // If the thread function is still running then we have a problem in the logic
-            // as this thread meant to be used via Runnable or ThreadPool classes
+            // as this thread meant to be used via Actor or ThreadPool classes
             // or it is taking too long
             string threadName = m_name.length() > 0 ? m_name : "unknown";
             string message = "Thread is still running , thread name : " + threadName;
