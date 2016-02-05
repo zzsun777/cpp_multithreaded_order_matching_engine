@@ -1,0 +1,53 @@
+// QUICKFIX
+#include <quickfix/Application.h>
+#include <quickfix/MessageCracker.h>
+#include <quickfix/ThreadedSocketAcceptor.h>
+#include <quickfix/FileStore.h>
+#include <quickfix/SocketInitiator.h>
+#include <quickfix/SessionSettings.h>
+#include <quickfix/Log.h>
+#include <quickfix/Session.h>
+#include <quickfix/Values.h>
+#include <quickfix/fix42/ExecutionReport.h>
+#include <quickfix/fix42/OrderCancelRequest.h>
+// STD
+#include <type_traits>
+#include <functional>
+#include <string>
+#include <memory>
+#include <exception>
+#include <utility>
+#include <iostream>
+#include <iomanip>
+#include <sstream>
+#include <fstream>
+#include <chrono>
+#include <new>
+#include <limits>
+#include <stdexcept>
+// STD THREADS
+#include <thread>
+#include <atomic>
+#include <mutex>
+#include <condition_variable>
+// STD C
+#include <ctime>
+#include <cassert>
+#include <cstddef>
+#include <cctype>
+// 	STD STL
+#include <algorithm>
+#include <vector>
+#include <unordered_map>
+// BOOST
+#include <boost/optional.hpp>
+#include <boost/any.hpp>
+#include <boost/noncopyable.hpp>
+#include <boost/tokenizer.hpp>
+#include <boost/format.hpp>
+#include <boost/flyweight.hpp>
+// WINDOWS
+#ifdef _WIN32
+#include <windows.h>
+#include <malloc.h>
+#endif

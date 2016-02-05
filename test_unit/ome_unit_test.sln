@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ome_unit_test", "ome_unit_test.vcxproj", "{5AD180D4-3D8E-4912-904B-EC39D3E01DDF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "google_test_windows", "google_test_windows\google_test_windows.vcxproj", "{BE460948-70B7-41FD-A516-702A874A60E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5AD180D4-3D8E-4912-904B-EC39D3E01DDF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5AD180D4-3D8E-4912-904B-EC39D3E01DDF}.Debug|Win32.Build.0 = Debug|Win32
+		{5AD180D4-3D8E-4912-904B-EC39D3E01DDF}.Release|Win32.ActiveCfg = Release|Win32
+		{5AD180D4-3D8E-4912-904B-EC39D3E01DDF}.Release|Win32.Build.0 = Release|Win32
+		{BE460948-70B7-41FD-A516-702A874A60E7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BE460948-70B7-41FD-A516-702A874A60E7}.Debug|Win32.Build.0 = Debug|Win32
+		{BE460948-70B7-41FD-A516-702A874A60E7}.Release|Win32.ActiveCfg = Release|Win32
+		{BE460948-70B7-41FD-A516-702A874A60E7}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
