@@ -46,6 +46,19 @@
 #include <boost/tokenizer.hpp>
 #include <boost/format.hpp>
 #include <boost/flyweight.hpp>
+// LINUX
+#ifdef __linux__
+#include <syscall.h>
+#include <unistd.h>
+#include <signal.h>
+#include <sys/ptrace.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <linux/user.h>
+#include <malloc.h>
+#include <pthread.h>
+#include <netinet/in.h>
+#endif
 // WINDOWS
 #ifdef _WIN32
 #include <windows.h>
