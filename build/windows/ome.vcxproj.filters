@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\source\concurrent\thread.cpp">
+      <Filter>concurrent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\concurrent\thread_pool.cpp">
+      <Filter>concurrent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\utility\config_file.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\utility\logger.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\utility\single_instance.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\utility\stopwatch.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\memory\aligned_memory.cpp">
+      <Filter>memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\order_matcher\order.cpp">
+      <Filter>order_matcher</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\order_matcher\order_book.cpp">
+      <Filter>order_matcher</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\order_matcher\central_order_book.cpp">
+      <Filter>order_matcher</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\server_main.cpp" />
+    <ClCompile Include="..\..\source\server\server.cpp">
+      <Filter>server</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\source\concurrent\task.h">
+      <Filter>concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\concurrent\thread.h">
+      <Filter>concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\concurrent\thread_pool.h">
+      <Filter>concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\utility\config_file.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\utility\logger.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\utility\single_instance.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\utility\stopwatch.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\memory\aligned_memory.h">
+      <Filter>memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\memory\cache_line.h">
+      <Filter>memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\order_matcher\order.h">
+      <Filter>order_matcher</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\order_matcher\order_book.h">
+      <Filter>order_matcher</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\memory\aligned.hpp">
+      <Filter>memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\order_matcher\central_order_book.h">
+      <Filter>order_matcher</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\concurrent\ring_buffer_spsc_lockfree.hpp">
+      <Filter>concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\concurrent\ring_buffer_mpmc.hpp">
+      <Filter>concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\precompiled_header.h" />
+    <ClInclude Include="..\..\source\server\server.h">
+      <Filter>server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\order_matcher\quickfix_converter.h">
+      <Filter>order_matcher</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\order_matcher\outgoing_message.h">
+      <Filter>order_matcher</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\server\server_outgoing_message_processor.h">
+      <Filter>server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\memory\aligned_container_policy.h">
+      <Filter>memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\utility\observer.hpp">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\utility\visitor.hpp">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\order_matcher\central_order_book_observer.h">
+      <Filter>order_matcher</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\order_matcher\central_order_book_visitor.h">
+      <Filter>order_matcher</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\server\server_incoming_message_dispatcher.h">
+      <Filter>server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\concurrent\queue_mpsc.hpp">
+      <Filter>concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\order_matcher\incoming_message.h">
+      <Filter>order_matcher</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\concurrent\queue_mpmc.hpp">
+      <Filter>concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\concurrent\actor.h">
+      <Filter>concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\memory\aligned_allocator.hpp">
+      <Filter>memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\utility\singleton.hpp">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\compiler_portability\alignas.h">
+      <Filter>compiler_portability</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\compiler_portability\fastcall.h">
+      <Filter>compiler_portability</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\compiler_portability\noexcept.h">
+      <Filter>compiler_portability</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\compiler_portability\preprocessor.h">
+      <Filter>compiler_portability</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\compiler_portability\thread_local.h">
+      <Filter>compiler_portability</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\memory\is_power_of_two.h">
+      <Filter>memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\utility\trace.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\utility\file_utility.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\utility\datetime_utility.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\utility\string_utility.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\compiler_portability\branch_predictor_hint.h">
+      <Filter>compiler_portability</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\compiler_portability\force_inline.h">
+      <Filter>compiler_portability</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\compiler_portability\no_inline.h">
+      <Filter>compiler_portability</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\compiler_portability\unused.h">
+      <Filter>compiler_portability</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\memory\debugging\hardware_breakpoint.h">
+      <Filter>memory\debugging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\memory\debugging\hook_gnu_libc.h">
+      <Filter>memory\debugging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\memory\debugging\hook_ms_crt.h">
+      <Filter>memory\debugging</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="concurrent">
+      <UniqueIdentifier>{27fdd7d8-93fe-440f-8a1f-b3ddad981d87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utility">
+      <UniqueIdentifier>{6dafee8d-76db-411e-87bc-eace7aa8a36c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="memory">
+      <UniqueIdentifier>{bf092d7e-419c-4ebe-bd14-b699b6827fe0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="order_matcher">
+      <UniqueIdentifier>{058c8716-bca9-4e48-877f-a656fa9fddf2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="server">
+      <UniqueIdentifier>{62ea120b-e105-4d83-a731-88417c70fcec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="compiler_portability">
+      <UniqueIdentifier>{5495b43b-3f74-468d-ba77-11a63f6effea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="memory\debugging">
+      <UniqueIdentifier>{e2506043-3705-4a74-be42-ec87752f681e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,5 +1,5 @@
-#ifndef _OUTGOING_MESSAGE_
-#define _OUTGOING_MESSAGE_
+#ifndef _OUTGOING_MESSAGE_H_
+#define _OUTGOING_MESSAGE_H_
 
 #include <string>
 #include "order.h"
@@ -19,7 +19,7 @@ class OutgoingMessage : public memory::Aligned<>
         {
         }
         
-        OutgoingMessage(Order order, OutgoingMessageType type, const std::string& message = "") : m_order(order), m_type(type), m_message(message)
+        OutgoingMessage(Order order, OutgoingMessageType type, const std::string& message = "") : m_order{order}, m_type{type}, m_message{message}
         {
         }
 

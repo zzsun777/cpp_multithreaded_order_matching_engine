@@ -1,5 +1,5 @@
-#ifndef _PREPROCESSOR_
-#define _PREPROCESSOR_
+#ifndef _PREPROCESSOR_H_
+#define _PREPROCESSOR_H_
 
 #if defined(_MSC_VER)
 #ifndef __func__

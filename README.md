@@ -81,6 +81,8 @@ For Linux, you need GNU Lib C runtime and libxml2.
 	Open the project from the project directory. ( Choose "nbproject" directory )
 	Build the project inside Netbeans IDE.
 
+Why Netbeans : In Netbeans, it is too straightforward to setup remote debugging, therefore it is quite convenient to build and debug on Linux from Windows via SSH and Samba. You can see an article about this setup here in my blog : https://nativecoding.wordpress.com/2014/10/24/configuring-a-debian-virtual-machine-for-linux-c-development-via-windows-step-by-step/
+	
 **How to build the project on Windows  :**
 	
 	You can build with Visual Studio 2013
@@ -138,7 +140,7 @@ You will also need to have "quickfix_FIX42.xml" and "quickfix_server.cfg" files 
 	
 	directory names					lower_case_word
 	file names 						lower_case_word
-	include guards 					_HEADER_
+	include guards 					_HEADER_H_
 	macros							UPPER_CASE_WORD
 	enums							UPPER_CASE_WORD
 	namespace names 				lower_case_word

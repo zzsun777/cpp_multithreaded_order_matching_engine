@@ -1,5 +1,5 @@
-#ifndef _TRACE_
-#define _TRACE_
+#ifndef _TRACE_H_
+#define _TRACE_H_
 
 #include <cstring>
 #include <cstdio>

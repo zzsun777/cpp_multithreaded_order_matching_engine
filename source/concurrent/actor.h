@@ -1,5 +1,5 @@
-#ifndef _ACTOR_
-#define _ACTOR_
+#ifndef _ACTOR_H_
+#define _ACTOR_H_
 
 #include <string>
 #include <memory>

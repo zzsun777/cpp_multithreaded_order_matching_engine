@@ -1,5 +1,5 @@
-#ifndef _CENTRAL_ORDER_BOOK_OBSERVER_
-#define _CENTRAL_ORDER_BOOK_OBSERVER_
+#ifndef _CENTRAL_ORDER_BOOK_OBSERVER_H_
+#define _CENTRAL_ORDER_BOOK_OBSERVER_H_
 
 #include "central_order_book.h"
 #include <utility/observer.hpp>

@@ -1,5 +1,5 @@
-#ifndef _NOEXCEPT_
-#define _NOEXCEPT_
+#ifndef _NOEXCEPT_H_
+#define _NOEXCEPT_H_
 
 #if defined(_MSC_VER)
 #if (_MSC_VER <= 1800)

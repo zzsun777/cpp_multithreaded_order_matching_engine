@@ -1,5 +1,5 @@
-#ifndef _RING_BUFFER_MPMC_
-#define _RING_BUFFER_MPMC_
+#ifndef _RING_BUFFER_MPMC_H_
+#define _RING_BUFFER_MPMC_H_
 
 #include <cstddef>
 #include <mutex>
@@ -16,7 +16,7 @@ class RingBufferMPMC : public boost::noncopyable
 {
     public:
 
-        explicit RingBufferMPMC(std::size_t capacity) : m_capacity(capacity), m_front(0), m_rear(0), m_count(0)
+        explicit RingBufferMPMC(std::size_t capacity) : m_capacity{capacity}, m_front{0}, m_rear{0}, m_count{0}
         {
             assert(capacity > 0);
             m_buffer = new T[m_capacity];

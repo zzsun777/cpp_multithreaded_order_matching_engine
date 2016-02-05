@@ -1,5 +1,5 @@
-#ifndef _QUICK_FIX_CONVERTER_
-#define _QUICK_FIX_CONVERTER_
+#ifndef _QUICK_FIX_CONVERTER_H_
+#define _QUICK_FIX_CONVERTER_H_
 
 #include <exception>
 

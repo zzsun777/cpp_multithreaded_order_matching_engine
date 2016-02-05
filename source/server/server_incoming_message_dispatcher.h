@@ -1,5 +1,5 @@
-#ifndef _INCOMING_MESSAGE_DISPATCHER_
-#define _INCOMING_MESSAGE_DISPATCHER_
+#ifndef _INCOMING_MESSAGE_DISPATCHER_H_
+#define _INCOMING_MESSAGE_DISPATCHER_H_
 
 #include <cassert>
 #include <string>
@@ -21,7 +21,7 @@ class IncomingMessageDispatcher : public Actor
 {
     public:
 
-        IncomingMessageDispatcher() : Actor("IncomingWorker"), m_centralOrderBook(nullptr)
+        IncomingMessageDispatcher() : Actor("IncomingWorker"), m_centralOrderBook{nullptr}
         // We can`t have more than 16 characters in Linux for a pthread name ,that is why compacted the thread name...
         {
         }

@@ -1,5 +1,5 @@
-#ifndef _VISITOR_
-#define _VISITOR_
+#ifndef _VISITOR_H_
+#define _VISITOR_H_
 
 namespace utility
 {

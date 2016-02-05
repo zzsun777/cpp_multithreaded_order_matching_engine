@@ -1,5 +1,5 @@
-#ifndef _SERVER_
-#define _SERVER_
+#ifndef _SERVER_H_
+#define _SERVER_H_
 
 #include <string>
 #include <vector>

@@ -1,5 +1,5 @@
-#ifndef _ORDER_
-#define _ORDER_
+#ifndef _ORDER_H_
+#define _ORDER_H_
 
 #include <string>
 #include <boost/flyweight.hpp>

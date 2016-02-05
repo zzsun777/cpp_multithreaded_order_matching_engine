@@ -27,7 +27,7 @@ using namespace order_matcher;
 #include <utility/logger.h>
 
 Server::Server(const std::string& fixEngineConfigFile, bool pinThreadsToCores, int threadStackSize, bool hyperThreading, unsigned int queueSizePerThread, const std::vector<std::string>& symbols)
-: m_fixEngineConfigFile(fixEngineConfigFile)
+: m_fixEngineConfigFile{fixEngineConfigFile}
 {
     if (!utility::doesFileExist(m_fixEngineConfigFile))
     {

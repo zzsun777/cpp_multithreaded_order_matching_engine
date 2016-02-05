@@ -1,5 +1,5 @@
-#ifndef _SINGLETON_
-#define _SINGLETON_
+#ifndef _SINGLETON_H_
+#define _SINGLETON_H_
 
 #include <boost/noncopyable.hpp>
 
@@ -20,13 +20,6 @@ class Singleton : public boost::noncopyable
             static T single_instance;
             return single_instance;
         }
-        
-    private :
-    
-        // Move ctor deletion
-        Singleton(Singleton&& other) = delete;
-        // Move assignment operator deletion
-        Singleton& operator=(Singleton&& other) = delete;
 };
 
 }

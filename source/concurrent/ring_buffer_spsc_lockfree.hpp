@@ -1,5 +1,5 @@
-#ifndef _RING_BUFFER_SPSC_LOCKFREE_
-#define _RING_BUFFER_SPSC_LOCKFREE_
+#ifndef _RING_BUFFER_SPSC_LOCKFREE_H_
+#define _RING_BUFFER_SPSC_LOCKFREE_H_
 
 #include <cstddef>
 #include <atomic>
@@ -17,7 +17,7 @@ class RingBufferSPSCLockFree : public boost::noncopyable
 {
     public:
 
-        explicit RingBufferSPSCLockFree(std::size_t capacity) : m_capacity(capacity)
+        explicit RingBufferSPSCLockFree(std::size_t capacity) : m_capacity{capacity}
         {
             assert(capacity > 0);
             m_buffer = new T[m_capacity];

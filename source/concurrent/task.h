@@ -1,5 +1,5 @@
-#ifndef _TASK_
-#define _TASK_
+#ifndef _TASK_H_
+#define _TASK_H_
 
 #include <memory>
 #include <functional>
@@ -24,7 +24,7 @@ class Task : public memory::Aligned<>
         ~Task() = default;
 
         template<typename Function, typename ...Args>
-        Task(Function f, Args... args) : m_callback(std::bind(f, args...))
+        Task(Function f, Args... args) : m_callback{std::bind(f, args...)}
         { }
 
         void execute()

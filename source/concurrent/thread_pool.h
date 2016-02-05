@@ -1,5 +1,5 @@
-#ifndef _THREAD_POOL_
-#define _THREAD_POOL_
+#ifndef _THREAD_POOL_H_
+#define _THREAD_POOL_H_
 
 #include <concurrent/task.h>
 #include <concurrent/thread.h>
@@ -33,7 +33,7 @@ struct ThreadPoolArguments
     std::vector<std::string> m_threadNames;
     
     ThreadPoolArguments() 
-    : m_pinThreadsToCores(true), m_hyperThreading(false), m_workQueueSizePerThread{ DEFAULT_WORK_QUEUE_SIZE }, m_threadStackSize{0}
+    : m_pinThreadsToCores{true}, m_hyperThreading{false}, m_workQueueSizePerThread{ DEFAULT_WORK_QUEUE_SIZE }, m_threadStackSize{0}
     {}
 };
 

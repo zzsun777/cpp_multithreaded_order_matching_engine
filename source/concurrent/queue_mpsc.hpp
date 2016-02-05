@@ -1,5 +1,5 @@
-#ifndef _QUEUE_MPSC_
-#define _QUEUE_MPSC_
+#ifndef _QUEUE_MPSC_H_
+#define _QUEUE_MPSC_H_
 
 #include <boost/noncopyable.hpp>
 #include <mutex>
@@ -19,7 +19,7 @@ class QueueMPSC : public boost::noncopyable, AlignedContainerPolicy<T>
         {
             T m_data;
             QueueMPSCNode* m_next;
-            QueueMPSCNode() : m_next(nullptr){}
+            QueueMPSCNode() : m_next{nullptr}{}
         };
 
         QueueMPSC()

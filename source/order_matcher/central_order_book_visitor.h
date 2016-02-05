@@ -1,5 +1,5 @@
-#ifndef _CENTRAL_ORDER_BOOK_VISITOR_
-#define _CENTRAL_ORDER_BOOK_VISITOR_
+#ifndef _CENTRAL_ORDER_BOOK_VISITOR_H_
+#define _CENTRAL_ORDER_BOOK_VISITOR_H_
 
 #include <string>
 #include <sstream>

@@ -1,5 +1,5 @@
-#ifndef _INCOMING_MESSAGE_
-#define _INCOMING_MESSAGE_
+#ifndef _INCOMING_MESSAGE_H_
+#define _INCOMING_MESSAGE_H_
 
 #include <string>
 #include "order.h"
@@ -20,7 +20,7 @@ class IncomingMessage : public memory::Aligned<>
         }
         
         IncomingMessage(Order order, IncomingMessageType type, const std::string& origClientOrderID="") 
-        : m_order(order), m_originalOrderID(origClientOrderID), m_type(type)
+        : m_order{order}, m_originalOrderID{origClientOrderID}, m_type{type}
         {
         }
 

@@ -1,5 +1,5 @@
-#ifndef _FILE_UTILITY_
-#define _FILE_UTILITY_
+#ifndef _FILE_UTILITY_H_
+#define _FILE_UTILITY_H_
 
 #include <string>
 #include <fstream>

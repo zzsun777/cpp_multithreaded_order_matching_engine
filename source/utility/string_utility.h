@@ -1,5 +1,5 @@
-#ifndef _STRING_UTILITY_
-#define _STRING_UTILITY_
+#ifndef _STRING_UTILITY_H_
+#define _STRING_UTILITY_H_
 
 #include <cctype>
 #include <string>
@@ -13,9 +13,9 @@ inline bool replaceInString(std::string& str, const std::string& from, const std
     auto start_pos = str.find(from);
 
     if (start_pos == std::string::npos)
-	{
+    {
         return false;
-	}
+    }
 
     str.replace(start_pos, from.length(), to);
     return true;

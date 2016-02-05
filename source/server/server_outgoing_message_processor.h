@@ -1,5 +1,5 @@
-#ifndef _OUTGOING_MESSAGE_PROCESSOR_
-#define _OUTGOING_MESSAGE_PROCESSOR_
+#ifndef _OUTGOING_MESSAGE_PROCESSOR_H_
+#define _OUTGOING_MESSAGE_PROCESSOR_H_
 
 #include <cassert>
 #include <string>
@@ -21,7 +21,7 @@ class OutgoingMessageProcessor : public Actor
 {
     public:
 
-        OutgoingMessageProcessor() : Actor("OutgoingWorker"), m_messageQueue(nullptr), m_execID(0)  
+        OutgoingMessageProcessor() : Actor("OutgoingWorker"), m_messageQueue{nullptr}, m_execID{0}
         // We can`t have more than 16 characters in Linux for a pthread name ,that is why compacted the thread name...
         {
         }

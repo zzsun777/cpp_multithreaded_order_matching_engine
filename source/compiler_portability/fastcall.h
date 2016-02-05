@@ -1,5 +1,5 @@
-#ifndef _FASTCALL_
-#define _FASTCALL_
+#ifndef _FASTCALL_H_
+#define _FASTCALL_H_
 
 #if defined(_MSC_VER)
 #if _MSC_VER >= 1800

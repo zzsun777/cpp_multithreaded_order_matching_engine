@@ -4,12 +4,12 @@ using namespace std::chrono;
 namespace utility
 {
 
-void  StopWatch::start ()
+void StopWatch::start ()
 {
-     m_startTime = high_resolution_clock::now();
+    m_startTime = high_resolution_clock::now();
 }
 
-void  StopWatch::stop ()
+void StopWatch::stop ()
 {
     m_endTime = high_resolution_clock::now();
 }

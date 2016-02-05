@@ -1,5 +1,5 @@
-#ifndef _ORDER_BOOK_
-#define  _ORDER_BOOK_
+#ifndef _ORDER_BOOK_H_
+#define _ORDER_BOOK_H_
 
 #include "order.h"
 

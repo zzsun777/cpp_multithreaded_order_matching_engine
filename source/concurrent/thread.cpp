@@ -15,7 +15,7 @@ using namespace std;
 namespace concurrent
 {
     
-Thread::Thread(const string& name) : m_task(nullptr), m_name(name), m_started(false), m_joined(false), m_threadID(0)
+Thread::Thread(const string& name) : m_task{nullptr}, m_name{name}, m_started{false}, m_joined{false}, m_threadID{0}
 {
 #ifdef _WIN32
     m_threadHandle = nullptr;

@@ -1,5 +1,5 @@
-#ifndef _NO_INLINE_
-#define _NO_INLINE_
+#ifndef _NO_INLINE_H_
+#define _NO_INLINE_H_
 
 #if defined(_MSC_VER)
 #define NO_INLINE __declspec(noinline)

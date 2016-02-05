@@ -1,5 +1,5 @@
-#ifndef _QUEUE_MPMC_
-#define _QUEUE_MPMC_
+#ifndef _QUEUE_MPMC_H_
+#define _QUEUE_MPMC_H_
 
 #include <boost/noncopyable.hpp>
 #include <mutex>
