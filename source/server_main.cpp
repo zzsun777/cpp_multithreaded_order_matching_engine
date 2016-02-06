@@ -16,6 +16,8 @@ namespace program_errors
     const int CONFIG_FILE = 1;
     const int ALREADY_RUNNING = 2;
     const int RUNTIME_ERROR = 3;
+    const int INSUFFICIENT_MEMORY = 4;
+    const int UNKNOWN_PROBLEM = 5;
 }
 
 
@@ -100,11 +102,11 @@ int main ()
     }
     catch (std::bad_alloc & )
     {
-        onError("Insufficient memory");
+        onError("Insufficient memory", program_errors::INSUFFICIENT_MEMORY);
     }
     catch (...)
     {
-        onError("Unknown exception occured");
+        onError("Unknown exception occured", program_errors::UNKNOWN_PROBLEM);
     }
     //////////////////////////////////////////
     // Application exit

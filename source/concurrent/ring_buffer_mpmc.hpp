@@ -4,6 +4,8 @@
 #include <cstddef>
 #include <mutex>
 #include <condition_variable>
+#include <memory>
+#include <utility>
 #include <boost/noncopyable.hpp>
 
 namespace concurrent
@@ -19,12 +21,12 @@ class RingBufferMPMC : public boost::noncopyable
         explicit RingBufferMPMC(std::size_t capacity) : m_capacity{capacity}, m_front{0}, m_rear{0}, m_count{0}
         {
             assert(capacity > 0);
-            m_buffer = new T[m_capacity];
+            std::unique_ptr <T, BufferDeleter> buffer(new T[m_capacity]);
+            m_buffer = std::move(buffer);
         }
 
         ~RingBufferMPMC()
         {
-            delete[] m_buffer;
         }
 
         std::size_t count()
@@ -39,7 +41,7 @@ class RingBufferMPMC : public boost::noncopyable
 
             m_notFull.wait(l, [this](){return m_count != m_capacity; });
 
-            m_buffer[m_rear] = data;
+            m_buffer.get()[m_rear] = data;
             m_rear = (m_rear + 1) % m_capacity;
             ++m_count;
 
@@ -53,7 +55,7 @@ class RingBufferMPMC : public boost::noncopyable
 
             m_notEmpty.wait(l, [this](){return m_count != 0; });
 
-            T result = m_buffer[m_front];
+            T result = m_buffer.get()[m_front];
             m_front = (m_front + 1) % m_capacity;
             --m_count;
 
@@ -65,7 +67,6 @@ class RingBufferMPMC : public boost::noncopyable
         }
 
     private:
-        T* m_buffer;
         size_t m_capacity;
 
         int m_front;
@@ -75,6 +76,13 @@ class RingBufferMPMC : public boost::noncopyable
         std::mutex m_lock;
         std::condition_variable m_notFull;
         std::condition_variable m_notEmpty;
+
+        struct BufferDeleter 
+        {
+            void operator()(T* memory) { delete[] memory; }
+        };
+
+        std::unique_ptr<T, BufferDeleter> m_buffer;
 };
   
 

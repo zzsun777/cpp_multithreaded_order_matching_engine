@@ -33,9 +33,11 @@ class QueueMPSC : public boost::noncopyable, AlignedContainerPolicy<T>
         
         ~QueueMPSC()
         {
-            if (m_head)
+            while (m_head)
             {
-                delete m_head;
+                auto temp = m_head;
+                m_head = m_head->m_next;
+                delete temp;
             }
         }
 

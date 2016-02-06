@@ -27,9 +27,11 @@ class QueueMPMC : public boost::noncopyable, AlignedContainerPolicy<T>
 
         ~QueueMPMC()
         {            
-            if ( m_head )
+            while (m_head)
             {
-                delete m_head;
+                auto temp = m_head;
+                m_head = m_head->m_next;
+                delete temp;
             }
         }
         
@@ -57,7 +59,6 @@ class QueueMPMC : public boost::noncopyable, AlignedContainerPolicy<T>
             }
             
             *data = newHead->m_data;
-            
             m_head = newHead; // Swapping dummy-initial node so we avoid to update the tail pointer
                              // Therefore no need for protecting the tail
             

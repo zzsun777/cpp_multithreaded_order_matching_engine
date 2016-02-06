@@ -73,6 +73,7 @@ For Linux, you need GNU Lib C runtime and libxml2.
 **How to build the project on Linux :**
 	
 	cd build/linux
+	make clean
 	make debug  OR make release
 
 **How to build the project on Linux using Netbeans 8.0.2 C++ IDE:**
@@ -100,6 +101,33 @@ Why Netbeans : In Netbeans, it is too straightforward to setup remote debugging,
 		
 You will also need to have "quickfix_FIX42.xml" and "quickfix_server.cfg" files to be in the same directory with OME executable. You can find them in "bin" directory.
 
+Once you start the ome executable , initially you will see a screen like this :
+
+		06-02-2016 16:22:00 : INFO , Main thread , starting
+		06-02-2016 16:22:00 : INFO , Thread pool , Thread(0) MSFT starting
+		06-02-2016 16:22:00 : INFO , Thread pool , Thread(1) AAPL starting
+		06-02-2016 16:22:00 : INFO , Thread pool , Thread(2) INTC starting
+		06-02-2016 16:22:00 : INFO , Thread pool , Thread(3) GOOGL starting
+		06-02-2016 16:22:00 : INFO , Thread pool , Thread(4) QCOM starting
+		06-02-2016 16:22:00 : INFO , Thread pool , Thread(5) QQQ starting
+		06-02-2016 16:22:00 : INFO , Thread pool , Thread(6) BBRY starting
+		06-02-2016 16:22:00 : INFO , Thread pool , Thread(7) SIRI starting
+		06-02-2016 16:22:00 : INFO , Thread pool , Thread(8) ZNGA starting
+		06-02-2016 16:22:00 : INFO , Thread pool , Thread(9) ARCP starting
+		06-02-2016 16:22:00 : INFO , Thread pool , Thread(10) XIV starting
+		06-02-2016 16:22:00 : INFO , Thread pool , Thread(11) FOXA starting
+		06-02-2016 16:22:00 : INFO , Thread pool , Thread(12) TVIX starting
+		06-02-2016 16:22:00 : INFO , Thread pool , Thread(13) YHOO starting
+		06-02-2016 16:22:00 : INFO , Thread pool , Thread(14) HBAN starting
+		06-02-2016 16:22:00 : INFO , Thread pool , Thread(15) BARC starting
+		06-02-2016 16:22:00 : INFO , Incoming message dispatcher , Thread starting
+		06-02-2016 16:22:00 : INFO , Outgoing message processor , Thread starting
+		06-02-2016 16:22:00 : INFO , FIX Engine , Acceptor started
+
+		Available commands :
+
+				display : Shows all order books in the central order book
+				quit : Shutdowns the server
 
 **Functional testing :** There is a prebuilt executable for both Linux and Windows which can send specified ask/bid orders to the order matching engine.
    

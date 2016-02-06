@@ -3,7 +3,7 @@
 
 #include <cassert>
 #include <string>
-
+#include <memory>
 #include <boost/format.hpp>
 
 #include <quickfix/Session.h>
@@ -61,53 +61,56 @@ class OutgoingMessageProcessor : public Actor
                     break;
                 }
                 
-                OutgoingMessage message;
-                if (m_messageQueue->dequeue(&message) == true)
-                {
-                    const Order& order = message.getOrder();
+                {//Creating scope for the smart ptr
+                    std::unique_ptr<OutgoingMessage> message{ new OutgoingMessage };
+                    if (m_messageQueue->dequeue(message.get()) == true)
+                    {
+                        const Order& order = message->getOrder();
 
-                    LOG_INFO("Outgoing message processor", boost::str(boost::format("Processing %s for order : %s ") % message.toString() % order.toString()) )
+                        LOG_INFO("Outgoing message processor", boost::str(boost::format("Processing %s for order : %s ") % message->toString() % order.toString()) )
                         
-                    FIX::TargetCompID targetCompID(order.getOwner());
-                    FIX::SenderCompID senderCompID(order.getTarget());
-                    auto status = convertToQuickFixOutgoingMessageType(message.getType());
+                        FIX::TargetCompID targetCompID(order.getOwner());
+                        FIX::SenderCompID senderCompID(order.getTarget());
+                        auto status = convertToQuickFixOutgoingMessageType(message->getType());
 
-                    FIX42::ExecutionReport fixOrder
-                        (FIX::OrderID(order.getClientID()),
-                        FIX::ExecID(genExecID()),
-                        FIX::ExecTransType(FIX::ExecTransType_NEW),
-                        FIX::ExecType(status),
-                        FIX::OrdStatus(status),
-                        FIX::Symbol(order.getSymbol()),
-                        FIX::Side(order_matcher::convertOrderSideToQuickFix(order.getSide())),
-                        FIX::LeavesQty(order.getOpenQuantity()),
-                        FIX::CumQty(order.getExecutedQuantity()),
-                        FIX::AvgPx(order.getAverageExecutedPrice()));
+                        FIX42::ExecutionReport fixOrder
+                            (FIX::OrderID(order.getClientID()),
+                            FIX::ExecID(genExecID()),
+                            FIX::ExecTransType(FIX::ExecTransType_NEW),
+                            FIX::ExecType(status),
+                            FIX::OrdStatus(status),
+                            FIX::Symbol(order.getSymbol()),
+                            FIX::Side(order_matcher::convertOrderSideToQuickFix(order.getSide())),
+                            FIX::LeavesQty(order.getOpenQuantity()),
+                            FIX::CumQty(order.getExecutedQuantity()),
+                            FIX::AvgPx(order.getAverageExecutedPrice()));
 
-                    fixOrder.set(FIX::ClOrdID(order.getClientID()));
-                    fixOrder.set(FIX::OrderQty(order.getQuantity()));
+                        fixOrder.set(FIX::ClOrdID(order.getClientID()));
+                        fixOrder.set(FIX::OrderQty(order.getQuantity()));
 
-                    if (status == FIX::OrdStatus_FILLED ||
-                        status == FIX::OrdStatus_PARTIALLY_FILLED)
-                    {
-                        fixOrder.set(FIX::LastShares(order.getLastExecutedQuantity()));
-                        fixOrder.set(FIX::LastPx(order.getLastExecutedPrice()));
-                    }
+                        if (status == FIX::OrdStatus_FILLED ||
+                            status == FIX::OrdStatus_PARTIALLY_FILLED)
+                        {
+                            fixOrder.set(FIX::LastShares(order.getLastExecutedQuantity()));
+                            fixOrder.set(FIX::LastPx(order.getLastExecutedPrice()));
+                        }
 
-                    try
-                    {
-                        FIX::Session::sendToTarget(fixOrder, senderCompID, targetCompID);
-                    }
-                    catch (FIX::SessionNotFound&) 
-                    {
-                        // TO BE IMPLEMENTED
-                    }
+                        try
+                        {
+                            FIX::Session::sendToTarget(fixOrder, senderCompID, targetCompID);
+                        }
+                        catch (FIX::SessionNotFound&) 
+                        {
+                            // TO BE IMPLEMENTED
+                        }
                         
-                }
-                else
-                {
-                    concurrent::Thread::yield();
-                }
+                    }
+                    else
+                    {
+                        concurrent::Thread::yield();
+                    }
+                }//Scope for the smart pointer
+              
                 
             }// while
 

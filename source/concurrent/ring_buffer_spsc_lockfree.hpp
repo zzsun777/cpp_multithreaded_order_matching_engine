@@ -5,6 +5,7 @@
 #include <atomic>
 #include <utility>
 #include <memory>
+#include <utility>
 #include <boost/noncopyable.hpp>
 
 namespace concurrent
@@ -20,14 +21,14 @@ class RingBufferSPSCLockFree : public boost::noncopyable
         explicit RingBufferSPSCLockFree(std::size_t capacity) : m_capacity{capacity}
         {
             assert(capacity > 0);
-            m_buffer = new T[m_capacity];
+            std::unique_ptr <T, BufferDeleter> buffer(new T[m_capacity]);
+            m_buffer = std::move(buffer);
             m_write.store(0);
             m_read.store(0);
         }
 
         ~RingBufferSPSCLockFree()
         {
-            delete [] m_buffer;
         }
 
         bool tryPush(T val)
@@ -36,7 +37,7 @@ class RingBufferSPSCLockFree : public boost::noncopyable
             const auto next_tail = increment(current_tail);
             if (next_tail != m_read.load(std::memory_order_acquire))
             {
-                m_buffer[current_tail] = val;
+                m_buffer.get()[current_tail] = val;
                 m_write.store(next_tail, std::memory_order_release);
                 return true;
             }
@@ -58,7 +59,7 @@ class RingBufferSPSCLockFree : public boost::noncopyable
                 return false;
             }
 
-            *element = m_buffer[currentHead];
+            *element = m_buffer.get()[currentHead];
             m_read.store(increment(currentHead), std::memory_order_release);
 
             return true;
@@ -74,7 +75,13 @@ class RingBufferSPSCLockFree : public boost::noncopyable
         std::atomic<int> m_write;
         std::atomic<int> m_read;
         std::size_t m_capacity;
-        T* m_buffer;
+
+        struct BufferDeleter
+        {
+            void operator()(T* memory) { delete[] memory; }
+        };
+
+        std::unique_ptr<T, BufferDeleter> m_buffer;
 
         // Move ctor deletion
         RingBufferSPSCLockFree(RingBufferSPSCLockFree&& other) = delete;

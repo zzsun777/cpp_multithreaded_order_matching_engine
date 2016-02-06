@@ -87,9 +87,11 @@ class IncomingMessageDispatcher : public Actor
                             default:
                             break;
                         }
-
+                        auto temp = messageLinkedList;
                         messageLinkedList = messageLinkedList->m_next;
+                        delete temp;
                     }
+                    
                 }
                 else
                 {
