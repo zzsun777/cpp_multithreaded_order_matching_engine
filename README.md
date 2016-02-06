@@ -78,6 +78,38 @@ and eventually trigger the order matching process for that queue. At the end of 
 
 4. Outgoing message processor which is a fine grained MPMC queue will process the outgoing messages.
 
+**How multithreading is implemented for order matching - Thread class & C++11:** The projects uses C++11 thread library for std::mutex and std::condition_variable and also std::lock_guard for scope based lock pattern. However I implemented a thread class using platform specific POSIX, NP POSIX and WindowsAPIs. The reasons are :
+
+	1. Ability to set thread stack size , neither Boost nor C++11 threads can do this.
+	
+	2. To provide an OOP way to pin threads to CPU core, setting thread names and static methods associated with thread class such as concurrent::Thread::isHyperThreading.
+	
+Below you can see output from VS debugger and Linux command line :
+
+http://technologycraft.co.uk/images_blog/thread_names_affinities.png
+
+	(gdb) info thread
+	Id   Target Id         Frame
+	19   Thread 0x7fffd17fa700 (LWP 20231) "OutgoingWorker" 0x00007ffff6db1067 in sched_yield () from /lib64/libc.so.6
+	18   Thread 0x7fffd1ffb700 (LWP 20230) "BARC" 0x00007ffff6d9348d in nanosleep () from /lib64/libc.so.6
+	17   Thread 0x7fffd27fc700 (LWP 20229) "HBAN" 0x00007ffff6d9348d in nanosleep () from /lib64/libc.so.6
+	16   Thread 0x7fffd2ffd700 (LWP 20228) "YHOO" 0x00007ffff6d9348d in nanosleep () from /lib64/libc.so.6
+	15   Thread 0x7fffd37fe700 (LWP 20227) "TVIX" 0x00007ffff6d9348d in nanosleep () from /lib64/libc.so.6
+	14   Thread 0x7fffd3fff700 (LWP 20226) "FOXA" 0x00007ffff6d9348d in nanosleep () from /lib64/libc.so.6
+	13   Thread 0x7fffe4ff9700 (LWP 20225) "XIV" 0x00007ffff6d9348d in nanosleep () from /lib64/libc.so.6
+	12   Thread 0x7fffe57fa700 (LWP 20224) "ARCP" 0x00007ffff6d9348d in nanosleep () from /lib64/libc.so.6
+	11   Thread 0x7fffe5ffb700 (LWP 20223) "ZNGA" 0x00007ffff6d9348d in nanosleep () from /lib64/libc.so.6
+	10   Thread 0x7fffe67fc700 (LWP 20222) "SIRI" 0x00007ffff6d9348d in nanosleep () from /lib64/libc.so.6
+	9    Thread 0x7fffe6ffd700 (LWP 20221) "BBRY" 0x00007ffff6d9348d in nanosleep () from /lib64/libc.so.6
+	8    Thread 0x7fffe77fe700 (LWP 20220) "QQQ" 0x00007ffff6d9348d in nanosleep () from /lib64/libc.so.6
+	7    Thread 0x7fffe7fff700 (LWP 20219) "QCOM" 0x00007ffff6d9348d in nanosleep () from /lib64/libc.so.6
+	6    Thread 0x7ffff4cd1700 (LWP 20218) "GOOGL" 0x00007ffff6d9348d in nanosleep () from /lib64/libc.so.6
+	5    Thread 0x7ffff54d2700 (LWP 20217) "INTC" 0x00007ffff6d9348d in nanosleep () from /lib64/libc.so.6
+	4    Thread 0x7ffff5cd3700 (LWP 20216) "AAPL" 0x00007ffff6d9348d in nanosleep () from /lib64/libc.so.6
+	3    Thread 0x7ffff64d4700 (LWP 20215) "MSFT" 0x00007ffff6d9348d in nanosleep () from /lib64/libc.so.6
+	2    Thread 0x7ffff6cd5700 (LWP 20214) "LoggerThread" 0x000000000041e28a in std::unique_ptr<concurrent::RingBufferMPMC<utility::LogEntry>, std::default_delete<concurrent::RingBufferMPMC<utility::LogEntry> > >::operator-> (this=0x6abf70 <utility::Logger::getInstance()::instance+656>) at /usr/include/c++/4.8.2/bits/unique_ptr.h:229
+	1    Thread 0x7ffff7fe0740 (LWP 20213) "ome" main () at ../../source/server_main.cpp:65
+
 **Build dependencies :** For Linux , the project is built and tested with GCC4.8. As for Windows it is using MSVC1200(VS2013). In the libraries side :
 
 - Boost 1.59 : using a compacted version by using the command below :
