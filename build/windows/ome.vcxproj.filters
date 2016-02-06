@@ -182,6 +182,9 @@
     <ClInclude Include="..\..\source\memory\debugging\hook_ms_crt.h">
       <Filter>memory\debugging</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\utility\pretty_exception.h">
+      <Filter>utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="concurrent">

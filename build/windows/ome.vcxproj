@@ -144,6 +144,7 @@
     <ClInclude Include="..\..\source\utility\file_utility.h" />
     <ClInclude Include="..\..\source\utility\observer.hpp" />
     <ClInclude Include="..\..\source\utility\config_file.h" />
+    <ClInclude Include="..\..\source\utility\pretty_exception.h" />
     <ClInclude Include="..\..\source\utility\singleton.hpp" />
     <ClInclude Include="..\..\source\utility\string_utility.h" />
     <ClInclude Include="..\..\source\utility\trace.h" />

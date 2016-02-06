@@ -1,6 +1,6 @@
 #include <exception>
 #include <iostream>
-#include <cstdlib> 
+#include <cstdlib>
 using namespace std;
 
 #include <utility/config_file.h>
@@ -9,7 +9,15 @@ using namespace std;
 #include <utility/file_utility.h>
 #include <server/server.h>
 
-void onException(const string& exception_message);
+void onError(const string& message, int exit_code);
+
+namespace program_errors
+{
+    const int CONFIG_FILE = 1;
+    const int ALREADY_RUNNING = 2;
+    const int RUNTIME_ERROR = 3;
+}
+
 
 int main ()
 {
@@ -42,10 +50,13 @@ int main ()
         centralOrderBookQueueSizePerThread = configuration.getIntVaue("CENTRAL_ORDER_BOOK_WORK_QUEUE_SIZE_PER_THREAD");
         centralOrderBookThreadStackSize = configuration.getIntVaue("CENTRAL_ORDER_BOOK_THREAD_STACK_SIZE");
     }
-    catch (std::runtime_error& e)
+    catch (std::invalid_argument & e)
     {
-        cerr << e.what() << endl;
-        return 2;
+        onError(e.what(), program_errors::CONFIG_FILE);
+    }
+    catch (std::runtime_error & e)
+    {
+        onError(e.what(), program_errors::CONFIG_FILE);
     }
     
      //////////////////////////////////////////
@@ -54,8 +65,7 @@ int main ()
     
     if ( !singleton() )
     {
-        cerr << "Ome process is running already." << endl;
-        return 1;
+        onError("Ome process is running already.", program_errors::ALREADY_RUNNING);
     }
 
     //////////////////////////////////////////
@@ -82,19 +92,19 @@ int main ()
     }
     catch (std::invalid_argument & e)
     {
-        onException(e.what());
+        onError(e.what(), program_errors::RUNTIME_ERROR);
     }
     catch (std::runtime_error & e)
     {
-        onException(e.what()); 
+        onError(e.what(), program_errors::RUNTIME_ERROR);
     }
     catch (std::bad_alloc & )
     {
-        onException("Insufficient memory");
+        onError("Insufficient memory");
     }
     catch (...)
     {
-        onException("Unknown exception occured");
+        onError("Unknown exception occured");
     }
     //////////////////////////////////////////
     // Application exit
@@ -103,13 +113,13 @@ int main ()
     return 0;
 }
 
-void onException(const string& exception_message)
+void onError(const string& message, int exit_code)
 {
-    std::cerr << exception_message << std::endl;
+    std::cerr << message << std::endl;
     if ( utility::Logger::getInstance().isAlive() )
     {
         LOG_ERROR("Main thread", "Ending")
         utility::Logger::getInstance().shutdown();
     }
-    std::exit(4);
+    std::exit(exit_code);
 }
