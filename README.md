@@ -236,6 +236,7 @@ Note 2: The executables and scripts help you to send orders to the engine , howe
 	method names 					pascalCase
 	variable names					pascalCase
 	member variables starts with	m_
+	directories/namespaces			As in Boost, there is a namespace per directory
 
 **Source code indentations and new line usage :**
 	
