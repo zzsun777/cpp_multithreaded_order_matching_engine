@@ -1,11 +1,8 @@
 #include <cassert>
 #include <utility>
-
 using namespace std;
 
-
 #include <boost/format.hpp>
-
 #include "thread_pool.h"
 #include <utility/logger.h>
 
@@ -31,14 +28,14 @@ void ThreadPool::initialise(const ThreadPoolArguments& args)
     }
     
     auto numThreads = args.m_threadNames.size();
-    unsigned int threadID = 0;
+    size_t threadID{0};
     string threadName;
 
     m_threadArguments.reserve(numThreads);
     m_threads.reserve(numThreads);
     m_threadQueues.reserve(numThreads);
     
-    for (unsigned int i(0); i< numThreads; i++)
+    for (size_t i{0}; i< numThreads; i++)
     {
         ThreadPoolQueuePtr queue(new ThreadPoolQueue(args.m_workQueueSizePerThread));
         m_threadQueues.push_back(std::move(queue));
