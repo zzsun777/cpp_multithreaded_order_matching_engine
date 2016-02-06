@@ -27,7 +27,7 @@ inline std::string getCurrentDateTime(const char* format = "%d-%m-%Y %H:%M:%S")
     // you need minimum GCC 5.1 , so using C library in this case
     time_t rawTime;
     struct tm * timeInfo;
-	const std::size_t buffer_size = 32;
+    const std::size_t buffer_size = 32;
     char buffer[buffer_size];
 
     time(&rawTime);
