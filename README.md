@@ -40,6 +40,9 @@ For more information , please see https://en.wikipedia.org/wiki/Financial_Inform
 For the time being, this projectis using opensource QuickFix engine and FIX specification 4.2.
 	
 **How multithreading is implemented for order matching:** The engine mainly consists of 2 parts : a FIX server/engine and the order matching layer.
+If you look at the source , the concurrency layer ( "source/concurrent" , using concurrent word since MS using concurrency for their own libraries ) , 
+the engine currently is using 1 lock free SPSC ring buffer and other fine grained lock based ring buffer and queues. Also the engine currently makes use of a set of CPU cache aligned allocators for memory allocations. ( "source/memory" ) See end of this readme for future plans.
+
 The core of order matching layer is called a central order book, which keeps order books per security symbol.
 Each order book has a table for bids and another table for asks. Briefly the multithreaded system works as below :
 
@@ -82,7 +85,7 @@ For Linux, you need GNU Lib C runtime and libxml2.
 	Open the project from the project directory. ( Choose "nbproject" directory )
 	Build the project inside Netbeans IDE.
 
-Why Netbeans : In Netbeans, it is too straightforward to setup remote debugging, therefore it is quite convenient to build and debug on Linux from Windows via SSH and Samba. You can see an article about this setup here in my blog : https://nativecoding.wordpress.com/2014/10/24/configuring-a-debian-virtual-machine-for-linux-c-development-via-windows-step-by-step/
+Why Netbeans : In Netbeans, it is too straightforward to setup remote debugging, therefore it is quite convenient to build and debug on Linux from Windows via SSH and Samba. You can see an article about this setup here in my blog. It is for Debian but it should be trivial to apply it to any other distribution : https://nativecoding.wordpress.com/2014/10/24/configuring-a-debian-virtual-machine-for-linux-c-development-via-windows-step-by-step/
 	
 **How to build the project on Windows  :**
 	
@@ -246,7 +249,7 @@ Benchmarking & Microbenchmarking : Will add probes for SystemTap for Linux, migh
 
 Concurrency : Lockfree containers , currently only SPSC bounded queue is lock free.
 
-Memory : 3rd party memory allocators support : jemalloc, intelTBB, tcMalloc, Lockless
+Memory : 3rd party memory allocators support : jemalloc, intelTBB, tcMalloc, Lockless. Currently the engine is using a set of CPU cache aligned allocators in "source/memory".
 
 **Considerations for future :**
 
