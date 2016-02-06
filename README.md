@@ -48,7 +48,7 @@ The core of order matching layer is called a central order book, which keeps ord
 Each order book has a table for bids and another table for asks. Briefly the multithreaded system works as below :
 
 1. The FIX engine will listen for session requests from the clients, and if a session is established
-then it listens for incoming ask/bid orders. If the order type is not supported. It sends "rejected" message.
+then it listens for incoming ask/bid orders. If the order type is not supported. It sends "rejected" message. Otherwise the message will be submitted to an incoming message dispatcher which is a fine grained MPSC unbounded queue.
 	
 2. Central Order book has a thread pool
 
