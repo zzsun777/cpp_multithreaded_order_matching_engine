@@ -236,6 +236,10 @@ Note 2: The executables and scripts help you to send orders to the engine , howe
 **Precompiled header file usage :** On Windows , the project is using /FI ( Force include parameter, therefore no need to include the pch header everywhere ) and specified the pch header to be precompiled_header.h. Note that this breaks edit-and-continue in Visual Studio.
 For Linux , there is pch rule to enable it in the makefile ( build/linux/Makefile) , but currently that rule is not being used since it doesn`t appear as it is doing much improvement as on Windows.
 
+For GCC see https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html
+
+For MSVC 120 see https://msdn.microsoft.com/en-us/library/8c5ztk84(v=vs.120).aspx
+
 **TODO for near future :**
 
 Benchmarking & Microbenchmarking : Will add probes for SystemTap for Linux, might add performance test cases using existing GoogleTest project
