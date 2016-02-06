@@ -3,6 +3,7 @@
 
 #include <cassert>
 #include <string>
+#include <memory>
 #include <boost/format.hpp>
 
 #include <order_matcher/incoming_message.h>
@@ -20,6 +21,9 @@ using namespace order_matcher;
 class IncomingMessageDispatcher : public Actor
 {
     public:
+
+        using IncomingMessageQueue = concurrent::QueueMPSC<IncomingMessage>;
+        using IncomingMessageQueueNode = concurrent::QueueMPSC<IncomingMessage>::QueueMPSCNode;
 
         IncomingMessageDispatcher() : Actor("IncomingWorker"), m_centralOrderBook{nullptr}
         // We can`t have more than 16 characters in Linux for a pthread name ,that is why compacted the thread name...
@@ -65,7 +69,7 @@ class IncomingMessageDispatcher : public Actor
                     break;
                 }
     
-                concurrent::QueueMPSC<IncomingMessage>::QueueMPSCNode* messageLinkedList = nullptr;
+                IncomingMessageQueueNode* messageLinkedList = nullptr;
 
                 if ((messageLinkedList = m_queue.flush()) != nullptr)
                 {
@@ -87,9 +91,8 @@ class IncomingMessageDispatcher : public Actor
                             default:
                             break;
                         }
-                        auto temp = messageLinkedList;
+                        std::unique_ptr< IncomingMessageQueueNode > temp{ messageLinkedList };
                         messageLinkedList = messageLinkedList->m_next;
-                        delete temp;
                     }
                     
                 }

@@ -207,10 +207,14 @@ Compiler support : Use of CMake, upgrading supported compiler versions and enabl
 
 Concurrency : Experiment order book processing on GPU with CUDA
 
-OS Support : Solaris
+OS Support : Solaris11
 
 New feature : Event broadcasting and sample feed handlers
 
-New feature : Visualisation of transactions with OpenGL/Vulkan
+New feature : Visualisation of transactions with OpenGL/Vulkan. See links below : 
 
-New feature : Save events in database
+						http://obt.hottolink.com/
+
+						http://parasec.net/transmission/order-book-visualisation/
+
+New feature : Save events in a database
