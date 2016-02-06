@@ -84,9 +84,11 @@ and eventually trigger the order matching process for that queue. At the end of 
 	
 	2. To provide an OOP way to pin threads to CPU core, setting thread names and static methods associated with thread class such as concurrent::Thread::isHyperThreading.
 	
-Below you can see output from VS debugger and Linux command line :
+VS Debugger thread window output showing named threads and affinities :
 
 http://technologycraft.co.uk/images_blog/thread_names_affinities.png
+
+GDB output in Linux showing named threads :
 
 	(gdb) info thread
 	Id   Target Id         Frame
