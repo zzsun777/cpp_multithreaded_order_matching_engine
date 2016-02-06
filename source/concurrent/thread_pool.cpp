@@ -23,17 +23,14 @@ void ThreadPool::initialise(const ThreadPoolArguments& args)
     // If the args says we shall not use it and also in the system if it is off
     if (Thread::isHyperThreading() && args.m_hyperThreading == false)
     {
+        // This one is on if we want to avoid hyperthreading
+        // Using cores with even indexes will help us to use only physical cores
+        // whereas odd indexes are logical cores
         useProcessorsWithEvenIndex = true;
         numCores /= 2;
     }
     
-    if( args.m_pinThreadsToCores == false )
-    {
-        numCores = 1;
-    }
-    
     auto numThreads = args.m_threadNames.size();
-    
     unsigned int threadID = 0;
     string threadName;
 
@@ -58,13 +55,21 @@ void ThreadPool::initialise(const ThreadPoolArguments& args)
         m_threads.back()->setTask(std::move(task));
         m_threads.back()->start( args.m_threadStackSize );
 
-        int coreID = i%numCores;
-
-        if (useProcessorsWithEvenIndex)
+        //If we need to pin threads to specific cores
+        if ( args.m_pinThreadsToCores == true )
         {
-            coreID *= 2;
+            int coreID = i%numCores;
+
+            if (useProcessorsWithEvenIndex)
+            {
+                // If we want to avoid HT
+                // that means we previously halved down num cores so that it is only physical cores
+                // Also still we need to use even indexes , as odd indexes are logical cores
+                coreID *= 2;
+            }
+
+            m_threads.back()->bindThreadToCPUCore(coreID);
         }
-        m_threads.back()->bindThreadToCPUCore(coreID);
 
         threadID++;
     }
