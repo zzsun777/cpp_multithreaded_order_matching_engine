@@ -39,9 +39,10 @@ For more information , please see https://en.wikipedia.org/wiki/Financial_Inform
 
 For the time being, this projectis using opensource QuickFix engine and FIX specification 4.2.
 	
-**How multithreading is implemented for order matching:** The engine mainly consists of 2 parts : a FIX server/engine and the order matching layer.
-If you look at the source , the concurrency layer ( "source/concurrent" , using concurrent word since MS using concurrency for their own libraries ) , 
+**How multithreading is implemented for order matching:** If you look at the source , the concurrency layer ( "source/concurrent" , using concurrent word since MS using concurrency for their own libraries ) , 
 the engine currently is using 1 lock free SPSC ring buffer and other fine grained lock based ring buffer and queues. Also the engine currently makes use of a set of CPU cache aligned allocators for memory allocations. ( "source/memory" ) See end of this readme for future plans.
+
+The engine mainly consists of 2 parts : a FIX server/engine and the order matching layer.
 
 The core of order matching layer is called a central order book, which keeps order books per security symbol.
 Each order book has a table for bids and another table for asks. Briefly the multithreaded system works as below :
