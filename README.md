@@ -42,9 +42,10 @@ For the time being, this projectis using opensource QuickFix engine and FIX spec
 **How multithreading is implemented for order matching:** If you look at the source , the concurrency layer ( "source/concurrent" , using concurrent word since MS using concurrency for their own libraries ) , 
 the engine currently is using 1 lock free SPSC ring buffer and other fine grained lock based ring buffer and queues. Also the engine currently makes use of a set of CPU cache aligned allocators for memory allocations. ( "source/memory" ).
 
-About aligned allocator in order to avoid false sharing : https://nativecoding.wordpress.com/2015/06/19/multithreading-multicore-programming-and-false-sharing-benchmark/
+About the aligned allocator in order to avoid false sharing : https://nativecoding.wordpress.com/2015/06/19/multithreading-multicore-programming-and-false-sharing-benchmark/
 
-SPSC lockfree ring buffer implementation : https://nativecoding.wordpress.com/2015/06/17/multithreading-lockless-thread-safe-spsc-ring-buffer-queue/ https://nativecoding.wordpress.com/2015/12/20/multithreading-memory-orderings-fine-grained-spsc-lockless-queue-benchmark/
+SPSC lockfree ring buffer implementation : https://nativecoding.wordpress.com/2015/06/17/multithreading-lockless-thread-safe-spsc-ring-buffer-queue/
+https://nativecoding.wordpress.com/2015/12/20/multithreading-memory-orderings-fine-grained-spsc-lockless-queue-benchmark/
 
 Fine grained lock based unbounded MPMC queue implementation : https://nativecoding.wordpress.com/2015/08/30/multithreading-lock-contention-and-fine-grained-vs-coarse-grained-benchmark/
 
