@@ -184,11 +184,11 @@ Once you start the ome executable , initially you will see a screen like this :
 
 Note 1: To parse the fix message which can be seen above , you can use one of the online FIX parsers :
 
-		http://fixdecoder.com/fix_decoder.html
+http://fixdecoder.com/fix_decoder.html
 		
-		http://fixparser.targetcompid.com/
-		
-		http://fix.aprics.net/
+http://fixparser.targetcompid.com/
+	
+http://fix.aprics.net/
 
 Note 2: The executables and scripts help you to send orders to the engine , however if you want to send custom FIX messages, you can use :
 
@@ -286,8 +286,8 @@ New feature : Event broadcasting and sample feed handlers
 
 New feature : Visualisation of transactions with OpenGL/Vulkan. See links below : 
 
-						http://obt.hottolink.com/
+http://obt.hottolink.com/
 
-						http://parasec.net/transmission/order-book-visualisation/
+http://parasec.net/transmission/order-book-visualisation/
 
 New feature : Save events in a database
