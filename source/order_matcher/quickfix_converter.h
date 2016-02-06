@@ -12,17 +12,17 @@
 namespace order_matcher
 {
 
-inline OrderType convertOrderTypeFromQuickFix( const FIX::OrdType& ordType )
+inline OrderType convertOrderTypeFromQuickFix(const FIX::OrdType& ordType) throw(std::invalid_argument)
 {
 	switch ( ordType )
 	{
 		case FIX::OrdType_LIMIT: return OrderType::LIMIT;
 
-		default: throw std::runtime_error( "Unsupported Order Type, use limit" );
+        default: throw std::invalid_argument("Unsupported Order Type, use limit");
 	}
 }
 
-inline OrderSide convertOrderSideFromQuickFix( const FIX::Side& side )
+inline OrderSide convertOrderSideFromQuickFix(const FIX::Side& side) throw(std::invalid_argument)
 {
 	switch ( side )
 	{
@@ -30,11 +30,11 @@ inline OrderSide convertOrderSideFromQuickFix( const FIX::Side& side )
  
         case FIX::Side_SELL: return OrderSide::SELL;
 		
-        default: throw std::runtime_error("Unsupported Side, use buy or sell");
+        default: throw std::invalid_argument("Unsupported Side, use buy or sell");
   }
 }
 
-inline FIX::Side convertOrderSideToQuickFix(const OrderSide& side)
+inline FIX::Side convertOrderSideToQuickFix(const OrderSide& side) throw(std::invalid_argument)
 {
     switch (side)
     {
@@ -42,11 +42,11 @@ inline FIX::Side convertOrderSideToQuickFix(const OrderSide& side)
 
         case OrderSide::SELL: return FIX::Side_SELL;
 
-        default: throw std::runtime_error("Unsupported Side, use buy or sell");
+        default: throw std::invalid_argument("Unsupported Side, use buy or sell");
     }
 }
 
-inline char convertToQuickFixOutgoingMessageType(const OutgoingMessageType& type)
+inline char convertToQuickFixOutgoingMessageType(const OutgoingMessageType& type) throw(std::invalid_argument)
 {
     switch (type)
     {
@@ -60,7 +60,7 @@ inline char convertToQuickFixOutgoingMessageType(const OutgoingMessageType& type
 
         case OutgoingMessageType::REJECTED: return FIX::OrdStatus_REJECTED;
 
-        default: throw std::runtime_error("Unsupported outgoing message type");
+        default: throw std::invalid_argument("Unsupported outgoing message type");
     }
 }
 

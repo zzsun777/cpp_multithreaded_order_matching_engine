@@ -71,11 +71,11 @@ void ThreadPool::initialise(const ThreadPoolArguments& args)
 }
 
 // THIS METHOD ITSELF IS NOT THREAD SAFE
-void ThreadPool::submitTask(const Task& task, size_t queueID)
+void ThreadPool::submitTask(const Task& task, size_t queueID) throw(std::invalid_argument)
 {
     if( queueID >= m_threadQueues.size() )
     {
-        throw std::runtime_error("Thread pool submit task , queue index is invalid");
+        throw std::invalid_argument("Thread pool submit task , queue index is invalid");
     }
     
     m_threadQueues[queueID]->push(task);

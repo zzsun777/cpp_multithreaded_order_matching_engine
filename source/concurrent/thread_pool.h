@@ -5,6 +5,7 @@
 #include <concurrent/thread.h>
 
 #include <cstddef>
+#include <exception>
 #include <atomic>
 #include <vector>
 #include <memory>
@@ -43,7 +44,7 @@ class ThreadPool : boost::noncopyable
         ThreadPool() : m_numOfThreads(0) { m_isShuttingDown.store(false); }
         ~ThreadPool() { shutdown(); }
         void initialise(const ThreadPoolArguments& args);
-        void submitTask(const Task& task, std::size_t queueID);
+        void submitTask(const Task& task, std::size_t queueID) throw(std::invalid_argument);
         void shutdown();
 
     private:

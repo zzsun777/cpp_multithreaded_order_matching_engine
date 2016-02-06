@@ -12,7 +12,7 @@ void Logger::initialise(size_t bufferSize)
     m_buffer.reset(new concurrent::RingBufferMPMC<LogEntry>(bufferSize));
 }
 
-void Logger::setLogFile(const string& fileName)
+void Logger::setLogFile(const string& fileName) throw(std::runtime_error)
 {
     //std::lock_guard<std::mutex> scoped_lock(m_logFileLock);
 
@@ -25,7 +25,7 @@ void Logger::setLogFile(const string& fileName)
 
     if (! m_logFile.is_open())
     {
-        THROW_PRETTY_EXCEPTION(boost::str(boost::format("Log file %s can`t be opened") % fileName.c_str()))
+        THROW_PRETTY_RUNTIME_EXCEPTION(boost::str(boost::format("Log file %s can`t be opened") % fileName.c_str()))
     }
 }
 

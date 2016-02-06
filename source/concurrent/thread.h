@@ -8,6 +8,7 @@
 #include <windows.h>
 #endif
 
+#include <exception>
 #include <cstddef>
 #include <utility>
 #include <string>
@@ -36,7 +37,7 @@ class Thread : public boost::noncopyable
 
         const std::string getThreadName()const {return m_name;}
         
-        void start(std::size_t stackSize=0);
+        void start(std::size_t stackSize=0) throw(std::runtime_error); 
         void join();
         bool isAlive() const;
         int bindThreadToCPUCore(int coreId);

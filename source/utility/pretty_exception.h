@@ -8,7 +8,7 @@
 // We could use boost::exception , however in that we have to catch boost::exception class
 
 // Implemented this "pretty_exception" macro using macro indirection in order to stick with
-// std::runtime_error
+// std::runtime_error or std::logic_error
 
 // Note for MSVC : std::exception implementation of Microsoft has an overloaded constructor
 // but this is not standard. Therefore using std::runtime_error
@@ -29,6 +29,8 @@
 #define PRETTY_EXCEPTION_LOCATION "File : "  __FILE__ NEW_LINE "Line:" STRINGIFY(__LINE__) 
 
 //Following .Net/Java exception message convention , first the message then its details...
-#define THROW_PRETTY_EXCEPTION(msg) throw std::runtime_error( (std::string((msg).c_str() ) +  NEW_LINE PRETTY_EXCEPTION_LOCATION).c_str() );
+#define THROW_PRETTY_RUNTIME_EXCEPTION(msg) throw std::runtime_error( (std::string((msg).c_str() ) +  NEW_LINE PRETTY_EXCEPTION_LOCATION).c_str() );
+#define THROW_PRETTY_LOGICAL_EXCEPTION(msg) throw std::logic_error( (std::string((msg).c_str() ) +  NEW_LINE PRETTY_EXCEPTION_LOCATION).c_str() );
+#define THROW_PRETTY_INVALID_ARG_EXCEPTION(msg) throw std::invalid_argument( (std::string((msg).c_str() ) +  NEW_LINE PRETTY_EXCEPTION_LOCATION).c_str() );
 
 #endif

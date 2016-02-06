@@ -27,12 +27,13 @@ using namespace order_matcher;
 #include <utility/logger.h>
 
 Server::Server(const std::string& fixEngineConfigFile, bool pinThreadsToCores, int threadStackSize, bool hyperThreading, unsigned int queueSizePerThread, const std::vector<std::string>& symbols)
+throw(std::runtime_error)
 : m_fixEngineConfigFile{fixEngineConfigFile}
 {
     if (!utility::doesFileExist(m_fixEngineConfigFile))
     {
         auto exceptionMessage = boost::str(boost::format("FIX configuration file %s does not exist") % m_fixEngineConfigFile);
-        THROW_PRETTY_EXCEPTION(exceptionMessage)
+        THROW_PRETTY_RUNTIME_EXCEPTION(exceptionMessage)
     }
    
     // Central order book initialisation

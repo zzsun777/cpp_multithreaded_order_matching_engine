@@ -1,5 +1,6 @@
 #include <exception>
 #include <iostream>
+#include <cstdlib> 
 using namespace std;
 
 #include <utility/config_file.h>
@@ -7,6 +8,8 @@ using namespace std;
 #include <utility/logger.h>
 #include <utility/file_utility.h>
 #include <server/server.h>
+
+void onException(const string& exception_message);
 
 int main ()
 {
@@ -60,7 +63,6 @@ int main ()
     utility::createDirectory("old_quickfix_logs");
     utility::backupDirectory("quickfix_log", "quickfix_log_" + utility::getCurrentDateTime("%d_%m_%Y_%H_%M_%S"), "old_quickfix_logs");
     //////////////////////////////////////////
-
     try
     {
         // Start logger
@@ -78,15 +80,36 @@ int main ()
         // Run the server
         application.run();
     }
+    catch (std::invalid_argument & e)
+    {
+        onException(e.what());
+    }
     catch (std::runtime_error & e)
     {
-        std::cerr << e.what() << std::endl;
-        return 3;
+        onException(e.what()); 
     }
-
+    catch (std::bad_alloc & )
+    {
+        onException("Insufficient memory");
+    }
+    catch (...)
+    {
+        onException("Unknown exception occured");
+    }
     //////////////////////////////////////////
     // Application exit
     LOG_INFO("Main thread", "Ending")
     utility::Logger::getInstance().shutdown();
     return 0;
+}
+
+void onException(const string& exception_message)
+{
+    std::cerr << exception_message << std::endl;
+    if ( utility::Logger::getInstance().isAlive() )
+    {
+        LOG_ERROR("Main thread", "Ending")
+        utility::Logger::getInstance().shutdown();
+    }
+    std::exit(4);
 }

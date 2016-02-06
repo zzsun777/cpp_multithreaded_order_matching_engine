@@ -100,7 +100,7 @@ class AlignedAllocator
        
 
         // The following will be different for each allocator.
-        T * allocate(const std::size_t n) const 
+        T * allocate(const std::size_t n) const throw(std::runtime_error, std::length_error)
         {
 
             // The return value of allocate(0) is unspecified.

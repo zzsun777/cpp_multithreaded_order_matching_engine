@@ -1,6 +1,7 @@
 #ifndef _OUTGOING_MESSAGE_H_
 #define _OUTGOING_MESSAGE_H_
 
+#include <exception>
 #include <string>
 #include "order.h"
 #include <memory/aligned.hpp>
@@ -27,7 +28,7 @@ class OutgoingMessage : public memory::Aligned<>
         const Order& getOrder() const { return m_order; }
         const OutgoingMessageType& getType() const { return m_type; }
 		
-        std::string toString() const
+        std::string toString() const throw(std::invalid_argument)
         {
             switch (m_type)
             {
@@ -47,7 +48,7 @@ class OutgoingMessage : public memory::Aligned<>
                     return "REJECTED";
                     break;
                 default:
-                    THROW_PRETTY_EXCEPTION(std::string("Invalid outgoing message type"))
+                    THROW_PRETTY_INVALID_ARG_EXCEPTION(std::string("Invalid outgoing message type"))
                     break;
             }
         }

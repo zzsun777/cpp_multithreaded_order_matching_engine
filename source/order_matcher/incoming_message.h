@@ -1,6 +1,7 @@
 #ifndef _INCOMING_MESSAGE_H_
 #define _INCOMING_MESSAGE_H_
 
+#include <exception>
 #include <string>
 #include "order.h"
 #include <memory/aligned.hpp>
@@ -28,7 +29,7 @@ class IncomingMessage : public memory::Aligned<>
         const IncomingMessageType& getType() const { return m_type; }
         const std::string& getOrigClientOrderID() const { return m_originalOrderID; }
 		
-        std::string toString() const
+        std::string toString() const throw(std::invalid_argument)
         {
             switch (m_type)
             {
@@ -39,7 +40,7 @@ class IncomingMessage : public memory::Aligned<>
                     return "CANCEL_ORDER";
                     break;
                 default:
-                    THROW_PRETTY_EXCEPTION(std::string("Invalid incoming message type"))
+                    THROW_PRETTY_INVALID_ARG_EXCEPTION(std::string("Invalid incoming message type"))
                     break;
             }
         }

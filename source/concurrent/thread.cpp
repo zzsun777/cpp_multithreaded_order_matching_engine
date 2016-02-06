@@ -1,7 +1,5 @@
 #include "thread.h"
-
 #include <cstdlib>
-#include <exception>
 #include <cassert>
 #include <memory>
 
@@ -86,7 +84,7 @@ void Thread::setThreadName()
     }
 }
 
-void Thread::start(size_t stackSize)
+void Thread::start(size_t stackSize) throw(std::runtime_error)
 {
     bool success = true;
  #ifdef __linux__  
@@ -168,7 +166,7 @@ bool Thread::isAlive() const
     bool ret = false;
 #ifdef __linux__
     // No signal is sent, but error checking is still performed so you can use that to check existence of tid :
-    //  On success, pthread_kill() returns 0
+    // On success, pthread_kill() returns 0
     
     // Thing I have experimented is that this method in debug mode ( gcc -g ) will cause a segmentation fault
     // However works fine in release mode

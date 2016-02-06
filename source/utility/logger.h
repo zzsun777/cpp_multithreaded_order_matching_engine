@@ -8,6 +8,7 @@
 #include <fstream>
 #include <atomic>
 #include <mutex>
+#include <exception>
 
 #include <concurrent/actor.h>
 #include <concurrent/ring_buffer_mpmc.hpp>
@@ -78,7 +79,7 @@ class Logger : public concurrent::Actor, public Singleton<Logger>
         void initialise(std::size_t bufferSize = DEFAULT_LOGGER_RING_BUFFER_SIZE);
         void enableFileLogging(bool value) { m_fileLoggingEnabled.store(value); }
         void enableConsoleOutput(bool value) { m_consoleOutputEnabled.store(value); }
-        void setLogFile(const std::string& fileName);
+        void setLogFile(const std::string& fileName) throw(std::runtime_error);
         void log(LogLevel level, const std::string& sender, const std::string& message, bool consoleOnly=false);
         void* run() override;
 

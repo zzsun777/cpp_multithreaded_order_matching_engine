@@ -25,20 +25,20 @@ class Server : public boost::noncopyable, public FIX::Application, public FIX::M
 {
     public:
     
-        Server(const std::string& fixEngineConfigFile, bool pinThreadsToCores, int threadStackSize, bool hyperThreading, unsigned int queueSizePerThread, const std::vector<std::string>& symbols);
+        Server(const std::string& fixEngineConfigFile, bool pinThreadsToCores, int threadStackSize, bool hyperThreading, unsigned int queueSizePerThread, const std::vector<std::string>& symbols) throw(std::runtime_error);
         ~Server();
         void run();
 
     private:
         void displayUsage();
         // FIX Engine Application overloads
-        void onCreate(const FIX::SessionID&);
-        void toAdmin(FIX::Message&, const FIX::SessionID&);
-        void fromAdmin(const FIX::Message&, const FIX::SessionID&) throw(FIX::FieldNotFound, FIX::IncorrectDataFormat, FIX::IncorrectTagValue, FIX::RejectLogon);
-        void onLogon(const FIX::SessionID& sessionID);
-        void onLogout(const FIX::SessionID& sessionID);
-        void toApp(FIX::Message&, const FIX::SessionID&) throw(FIX::DoNotSend);
-        void fromApp(const FIX::Message& message, const FIX::SessionID& sessionID) throw(FIX::FieldNotFound, FIX::IncorrectDataFormat, FIX::IncorrectTagValue, FIX::UnsupportedMessageType);
+        void onCreate(const FIX::SessionID&) override;
+        void toAdmin(FIX::Message&, const FIX::SessionID&) override;
+        void fromAdmin(const FIX::Message&, const FIX::SessionID&) throw(FIX::FieldNotFound, FIX::IncorrectDataFormat, FIX::IncorrectTagValue, FIX::RejectLogon) override;
+        void onLogon(const FIX::SessionID& sessionID) override;
+        void onLogout(const FIX::SessionID& sessionID) override;
+        void toApp(FIX::Message&, const FIX::SessionID&) throw(FIX::DoNotSend) override;
+        void fromApp(const FIX::Message& message, const FIX::SessionID& sessionID) throw(FIX::FieldNotFound, FIX::IncorrectDataFormat, FIX::IncorrectTagValue, FIX::UnsupportedMessageType) override;
 
         // FIX Engine MessageCracker overloads
         void onMessage(const FIX42::NewOrderSingle&, const FIX::SessionID&);
