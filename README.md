@@ -40,7 +40,13 @@ For more information , please see https://en.wikipedia.org/wiki/Financial_Inform
 For the time being, this projectis using opensource QuickFix engine and FIX specification 4.2.
 	
 **How multithreading is implemented for order matching:** If you look at the source , the concurrency layer ( "source/concurrent" , using concurrent word since MS using concurrency for their own libraries ) , 
-the engine currently is using 1 lock free SPSC ring buffer and other fine grained lock based ring buffer and queues. Also the engine currently makes use of a set of CPU cache aligned allocators for memory allocations. ( "source/memory" ) See end of this readme for future plans.
+the engine currently is using 1 lock free SPSC ring buffer and other fine grained lock based ring buffer and queues. Also the engine currently makes use of a set of CPU cache aligned allocators for memory allocations. ( "source/memory" ).
+
+About aligned allocator in order to avoid false sharing : https://nativecoding.wordpress.com/2015/06/19/multithreading-multicore-programming-and-false-sharing-benchmark/
+SPSC lockfree ring buffer implementation : https://nativecoding.wordpress.com/2015/06/17/multithreading-lockless-thread-safe-spsc-ring-buffer-queue/ https://nativecoding.wordpress.com/2015/12/20/multithreading-memory-orderings-fine-grained-spsc-lockless-queue-benchmark/
+Fine grained lock based unbounded MPMC queue implementation : https://nativecoding.wordpress.com/2015/08/30/multithreading-lock-contention-and-fine-grained-vs-coarse-grained-benchmark/
+
+See end of this readme for future plans.
 
 The engine mainly consists of 2 parts : a FIX server/engine and the order matching layer.
 
@@ -49,6 +55,7 @@ Each order book has a table for bids and another table for asks. Briefly the mul
 
 1. The FIX engine will listen for session requests from the clients, and if a session is established
 then it listens for incoming ask/bid orders. If the order type is not supported. It sends "rejected" message. Otherwise the message will be submitted to an incoming message dispatcher which is a fine grained MPSC unbounded queue.
+The incoming message dispatcher will submit messages to the central order book.
 	
 2. Central Order book has a thread pool
 
@@ -56,12 +63,12 @@ then it listens for incoming ask/bid orders. If the order type is not supported.
 		
 		- Central Order book also has 1 MPMC queue for outgoing messages.
 		
-		- When a new message arrives ( new order, or cancel ) from the FIX engine, it will be submitted to corresponding thread`s queue in the thread pool of the central order book.
+		- When a new message arrives ( new order, or cancel ) from the incoming message dispatcher, it will be submitted to corresponding thread`s queue in the thread pool of the central order book.
 		
 3. Each thread in the thread pool will get message from their SPSC queue in the thread pool , and add them to corresponding order queue which is used by only itself
 and eventually trigger the order matching process for that queue. At the end of the order matching , worker threads will submit messages ( FILLED or PARTIALLY FILLED ) to the outgoing messages queue 
 
-4. Outgoing message processor which is a MPMC queue will process the outgoing messages.
+4. Outgoing message processor which is a fine grained MPMC queue will process the outgoing messages.
 
 **Build dependencies :** For Linux , the project is built and tested with GCC4.8. As for Windows it is using MSVC1200(VS2013). In the libraries side :
 
