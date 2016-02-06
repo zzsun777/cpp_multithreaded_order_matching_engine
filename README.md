@@ -129,7 +129,7 @@ Once you start the ome executable , initially you will see a screen like this :
 				display : Shows all order books in the central order book
 				quit : Shutdowns the server
 				
-**Example log message from the engine :** The engine produces the log message below when it receives 1 buy order with quantity 1 and 1 sell order with quantity 1, both are same symbols :
+**Example log message from the engine :** The engine produces log messages below when it receives 1 buy order with quantity 1 and 1 sell order with quantity 1 for the same symbol :
 
 	06-02-2016 20:16:09 : INFO , FIX Engine , New logon , session ID : FIX.4.2:OME->TEST_CLIENT1
 	06-02-2016 20:16:09 : INFO , FIX Engine , Sending fix message : 8=FIX.4.29=15435=834=543=Y49=OME52=20160206-20:16:09.29556=TEST_CLIENT1122=20160206-20:15:03.9556=011=414=017=1820=037=438=139=054=155=MSFT150=0151=110=000
