@@ -192,8 +192,9 @@ http://fix.aprics.net/
 
 Note 2: The executables and scripts help you to send orders to the engine , however if you want to send custom FIX messages, you can use :
 
-		MiniFIX , http://elato.se/minifix/download.html , Windows only with a GUI
-		QuickFixMessanger , https://github.com/jramoyo/quickfix-messenger
+MiniFIX , http://elato.se/minifix/download.html , Windows only with a GUI
+
+QuickFixMessanger , https://github.com/jramoyo/quickfix-messenger
 
 **Functional testing :** There is a prebuilt executable for both Linux and Windows which can send specified ask/bid orders to the order matching engine.
    
