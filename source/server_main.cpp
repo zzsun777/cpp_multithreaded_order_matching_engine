@@ -13,7 +13,7 @@ void onError(const string& message, int exit_code);
 
 namespace program_errors
 {
-    const int CONFIG_FILE = 1;
+    const int INVALID_CONFIG_FILE = 1;
     const int ALREADY_RUNNING = 2;
     const int RUNTIME_ERROR = 3;
     const int INSUFFICIENT_MEMORY = 4;
@@ -54,11 +54,11 @@ int main ()
     }
     catch (std::invalid_argument & e)
     {
-        onError(e.what(), program_errors::CONFIG_FILE);
+        onError(e.what(), program_errors::INVALID_CONFIG_FILE);
     }
     catch (std::runtime_error & e)
     {
-        onError(e.what(), program_errors::CONFIG_FILE);
+        onError(e.what(), program_errors::INVALID_CONFIG_FILE);
     }
     
      //////////////////////////////////////////
