@@ -8,6 +8,7 @@ before_script:
 - sudo dependencies/quickfix/linux_compile_and_runtime/install_quickfix_runtime.sh
 script:
 - cd build/linux
+- export LIBRARY_PATH=/usr/local/lib/
 - make clean && make release
 notifications:
   email:
