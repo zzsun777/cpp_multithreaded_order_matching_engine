@@ -164,7 +164,7 @@ For 8 symbols , I have fired 4224 orders on a Intel Haswell I7 quadcore processo
 
 				bcp --boost=c:\boost_1_59_0 shared_ptr scoped_ptr any optional tokenizer format c:\boost
 						
-- QuickFix & its requirements : Please do the steps on http://www.quickfixengine.org/quickfix/doc/html/install.html
+- QuickFix & its requirements : For Windows you don`t need to do anything as the static library for Windows is already in dependencies directory. For Linux you need to apply the steps on http://www.quickfixengine.org/quickfix/doc/html/install.html
 
 ===========================================================================
 
