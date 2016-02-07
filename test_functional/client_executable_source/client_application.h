@@ -75,14 +75,14 @@ class ClientApplication : public FIX::Application, public FIX::MessageCracker, p
             return true;
         }
 
-        void onCreate(const FIX::SessionID&) {}
-        void onLogon(const FIX::SessionID& sessionID);
-        void onLogout(const FIX::SessionID& sessionID);
-        void toAdmin(FIX::Message&, const FIX::SessionID&) {}
-        void toApp(FIX::Message&, const FIX::SessionID&) throw(FIX::DoNotSend);
-        void fromAdmin(const FIX::Message&, const FIX::SessionID&) throw(FIX::FieldNotFound, FIX::IncorrectDataFormat, FIX::IncorrectTagValue, FIX::RejectLogon) {}
-        void fromApp(const FIX::Message& message, const FIX::SessionID& sessionID) throw(FIX::FieldNotFound, FIX::IncorrectDataFormat, FIX::IncorrectTagValue, FIX::UnsupportedMessageType);
-        void onMessage(const FIX42::ExecutionReport&, const FIX::SessionID&);
+        void onCreate(const FIX::SessionID&) override {}
+        void onLogon(const FIX::SessionID& sessionID) override;
+        void onLogout(const FIX::SessionID& sessionID) override;
+        void toAdmin(FIX::Message&, const FIX::SessionID&) override{}
+        void toApp(FIX::Message&, const FIX::SessionID&) throw(FIX::DoNotSend) override;
+        void fromAdmin(const FIX::Message&, const FIX::SessionID&) throw(FIX::FieldNotFound, FIX::IncorrectDataFormat, FIX::IncorrectTagValue, FIX::RejectLogon) override {}
+        void fromApp(const FIX::Message& message, const FIX::SessionID& sessionID) throw(FIX::FieldNotFound, FIX::IncorrectDataFormat, FIX::IncorrectTagValue, FIX::UnsupportedMessageType) override;
+        void onMessage(const FIX42::ExecutionReport&, const FIX::SessionID&) override;
 
         int m_orderID = 0;
         std::string m_fixEngineConfigFile = "";

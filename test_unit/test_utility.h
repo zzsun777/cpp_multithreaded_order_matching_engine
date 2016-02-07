@@ -1,6 +1,6 @@
 #include <utility/config_file.h>
 #include <utility/single_instance.h>
-#include <utility/utility.h>
+#include <utility/string_utility.h>
 #include <string>
 
 TEST(Utility, SingleInstance)

@@ -4,6 +4,7 @@
 // Use C++11 if available , otherwise compiler extensions
 #if defined(_MSC_VER)
 #if MSC_VER<=1800
+#include <xkeycheck.h> // In order to allow keyword macros
 #define alignas(A) __declspec(align(A))
 #endif
 #elif defined(__GNUC__)

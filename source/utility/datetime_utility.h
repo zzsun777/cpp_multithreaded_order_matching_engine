@@ -6,6 +6,7 @@
 #include <sstream>
 #include <ctime>
 #include <cstddef>
+#include <iomanip>
 
 namespace utility
 {

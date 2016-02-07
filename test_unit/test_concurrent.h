@@ -205,28 +205,35 @@ class ThreadPoolJob
 
 TEST(Concurrent, ThreadPool)
 {
-    utility::Logger::getInstance()->initialise(1024);
-    utility::Logger::getInstance()->setLogFile("oms_log.txt");
-    utility::Logger::getInstance()->enableFileLogging(false);
-    utility::Logger::getInstance()->enableConsoleOutput(false);
+    utility::Logger::getInstance().initialise(1024);
+    utility::Logger::getInstance().setLogFile("oms_log.txt");
+    utility::Logger::getInstance().enableFileLogging(false);
+    utility::Logger::getInstance().enableConsoleOutput(false);
 
+    vector<string> threadNames = { "a", "b", "c", "d" };
+    
+    concurrent::ThreadPoolArguments args;
+    args.m_hyperThreading = true;
+    args.m_pinThreadsToCores = true;
+    args.m_threadNames = threadNames;
+    args.m_workQueueSizePerThread = 1024;
     concurrent::ThreadPool pool;
-    vector<string> threadNames = {"a", "b", "c", "d"};
-    pool.initialise(true, 1024, threadNames);
+    
+    pool.initialise(args);
 
     int* workArray = new int[ threadNames.size() ];
     ThreadPoolJob job;
     
-    ThreadPoolJobArgs args;
-    args.array = workArray;
+    ThreadPoolJobArgs job_args;
+    job_args.array = workArray;
 
     int expectedSum = 0;
     
     for (size_t i = 0; i < threadNames.size(); i++)
     {
-        args.index = i;
+        job_args.index = i;
         expectedSum += i;
-        concurrent::Task task(&ThreadPoolJob::run, &job, args);
+        concurrent::Task task(&ThreadPoolJob::run, &job, job_args);
         pool.submitTask(task, i);
         concurrent::Thread::sleep(1000);
     }

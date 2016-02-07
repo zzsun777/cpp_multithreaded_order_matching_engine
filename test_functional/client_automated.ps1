@@ -62,10 +62,10 @@ Write-Host ""
 $client_executable = Resolve-Path ".\client.exe"
 $process_executor = New-Object MultiProcessStarter
 
-#Start tests	   
+#Start tests       
 foreach( $client in $global:CLIENTS )
 {
-	Write-Host "Starting test for $client"
+    Write-Host "Starting test for $client"
     [string]$current_args = "$global:TEMPLATE_FILE $global:SERVER $client $global:TEST_CASES_FILE"
     $process_executor.add($client_executable, $current_args)
 }

@@ -10,8 +10,21 @@ using namespace std;
 
 #include <boost/format.hpp>
 
-#include <utility/utility.h>
+#include <utility/file_utility.h>
+#include <utility/string_utility.h>
+#include <utility/datetime_utility.h>
 #include <utility/pretty_exception.h>
+
+namespace program_errors
+{
+    const int INVALID_CONFIG_FILE = 1;
+    const int ALREADY_RUNNING = 2;
+    const int RUNTIME_ERROR = 3;
+    const int INSUFFICIENT_MEMORY = 4;
+    const int UNKNOWN_PROBLEM = 5;
+}
+
+void onError(const string& message, int exit_code);
 
 void createQuickFixConfigFile(const string& templateFile, const string& server, const string &clientName, const string& outputFileName);
 
@@ -34,7 +47,7 @@ int main(int argc, char** argv)
         string quickFixConfigFile = clientName + ".cfg";
         createQuickFixConfigFile(quickFixTemplateFile, targetServer, clientName, quickFixConfigFile);
 
-        if (quickFixConfigFile.length() < 5) { throw std::runtime_error("Invalid FIX engine config file"); }
+        if (quickFixConfigFile.length() < 5) { throw std::invalid_argument("Invalid FIX engine config file"); }
 
         // Backup FIX engine logs if exists
         utility::createDirectory("old_quickfix_logs");
@@ -46,13 +59,30 @@ int main(int argc, char** argv)
         
         utility::deleteFile(quickFixConfigFile);
     }
+    catch (std::invalid_argument & e)
+    {
+        onError(e.what(), program_errors::RUNTIME_ERROR);
+    }
     catch (std::runtime_error & e)
     {
-        std::cout << e.what();
-        return 1;
+        onError(e.what(), program_errors::RUNTIME_ERROR);
+    }
+    catch (std::bad_alloc& e)
+    {
+        onError(e.what(), program_errors::INSUFFICIENT_MEMORY);
+    }
+    catch (...)
+    {
+        onError("Unknown exception caught", program_errors::UNKNOWN_PROBLEM);
     }
 
     return 0;
+}
+
+void onError(const string& message, int exit_code)
+{
+    std::cerr << message << std::endl;
+    std::exit(exit_code);
 }
 
 void createQuickFixConfigFile(const string& templateFile, const string& server, const string &clientName, const string &outputFileName)

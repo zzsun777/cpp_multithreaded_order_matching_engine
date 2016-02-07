@@ -20,7 +20,7 @@ ClientRequest::ClientRequest(const string& csvRequest)
     if (numTokens < 5)
     {
         auto exceptionMessage = boost::str(boost::format("Invalid number of tokens in line : %s") % csvRequest);
-        THROW_PRETTY_EXCEPTION(exceptionMessage)
+        THROW_PRETTY_INVALID_ARG_EXCEPTION(exceptionMessage)
     }
 
     // ORDER TYPE COLUMN
@@ -33,7 +33,7 @@ ClientRequest::ClientRequest(const string& csvRequest)
         if (numTokens != 6)
         {
             auto exceptionMessage = boost::str(boost::format("Invalid number of tokens for a new order in line : %s") % csvRequest);
-            THROW_PRETTY_EXCEPTION(exceptionMessage)
+            THROW_PRETTY_INVALID_ARG_EXCEPTION(exceptionMessage)
         }
     }
     else if (orderType.compare("CANCEL_ORDER") == 0)
@@ -43,12 +43,12 @@ ClientRequest::ClientRequest(const string& csvRequest)
         if (numTokens != 5)
         {
             auto exceptionMessage = boost::str(boost::format("Invalid number of tokens for a cancel order in line : %s") % csvRequest);
-            THROW_PRETTY_EXCEPTION(exceptionMessage)
+            THROW_PRETTY_INVALID_ARG_EXCEPTION(exceptionMessage)
         }
     }
     else
     {
-        THROW_PRETTY_EXCEPTION(std::string("Invalid order type"))
+        THROW_PRETTY_INVALID_ARG_EXCEPTION(std::string("Invalid order type"))
     }
         
     // SYMBOL COLUMN
@@ -70,7 +70,7 @@ ClientRequest::ClientRequest(const string& csvRequest)
     }
     else
     {
-        THROW_PRETTY_EXCEPTION(std::string("Invalid side"))
+        THROW_PRETTY_INVALID_ARG_EXCEPTION(std::string("Invalid side"))
     }
 
     // TARGET ID

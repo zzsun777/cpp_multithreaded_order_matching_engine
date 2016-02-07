@@ -5,7 +5,8 @@
 using namespace std;
 
 #include <utility/pretty_exception.h>
-#include <utility/utility.h>
+#include <utility/datetime_utility.h>
+#include <utility/file_utility.h>
 #include <concurrent/thread.h>
 
 #include <boost/format.hpp>
@@ -27,13 +28,13 @@ ClientApplication::ClientApplication(const string& csvTestFile, const string& fi
     if (!utility::doesFileExist(m_fixEngineConfigFile))
     {
         auto exceptionMessage = boost::str(boost::format("FIX configuration file %s does not exist") % m_fixEngineConfigFile);
-        THROW_PRETTY_EXCEPTION(exceptionMessage)
+        THROW_PRETTY_RUNTIME_EXCEPTION(exceptionMessage)
     }
 
     if (!utility::doesFileExist(csvTestFile))
     {
         auto exceptionMessage = boost::str(boost::format("Test file %s does not exist") % csvTestFile);
-        THROW_PRETTY_EXCEPTION(exceptionMessage)
+        THROW_PRETTY_RUNTIME_EXCEPTION(exceptionMessage)
     }
 
     // Extract client id from the name of the cfg file
@@ -154,7 +155,7 @@ void ClientApplication::waitTillAllRequestsComplete()
 
         if (secondsWaited >= SERVER_PROCESS_TIMEOUT)
         {
-            THROW_PRETTY_EXCEPTION(std::string("Timeout , when waiting responses from the server , check the server logs"))
+            THROW_PRETTY_RUNTIME_EXCEPTION(std::string("Timeout , when waiting responses from the server , check the server logs"))
         }
     }
 }
@@ -170,7 +171,7 @@ void ClientApplication::waitTillSessionStarts()
 
         if (secondsWaited >= SESSION_TIMEOUT)
         {
-            THROW_PRETTY_EXCEPTION(std::string("Timeout , could not establish a session with the server"))
+            THROW_PRETTY_RUNTIME_EXCEPTION(std::string("Timeout , could not establish a session with the server"))
         }
     }
 }
@@ -182,7 +183,7 @@ void ClientApplication::loadRequests(const std::string& csvTestFile)
     if (!file.good())
     {
         auto exceptionMessage = boost::str(boost::format("File %s could not be opened") % csvTestFile);
-        THROW_PRETTY_EXCEPTION(exceptionMessage)
+        THROW_PRETTY_RUNTIME_EXCEPTION(exceptionMessage)
     }
 
     file.seekg(0, std::ios::beg);
@@ -250,7 +251,7 @@ std::string ClientApplication::orderStatusToString(const FIX::OrdStatus& type)
         case FIX::OrdStatus_REJECTED:
             return "REJECTED BY THE SERVER";
         default:
-            THROW_PRETTY_EXCEPTION(string("Not supported order status type") )
+            THROW_PRETTY_RUNTIME_EXCEPTION(string("Not supported order status type"))
     }
 }
 
