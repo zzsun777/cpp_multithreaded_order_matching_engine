@@ -121,7 +121,22 @@ GDB output in Linux showing named threads :
 - QuickFix & its requirements : libxml2-devel & http://www.quickfixengine.org/quickfix/doc/html/install.html
 
 **Runtime dependencies :** For Windows, you have to install MSVC120 runtime : https://www.microsoft.com/en-gb/download/details.aspx?id=40784
-For Linux, you need GNU Lib C runtime and libxml2.
+For Linux, you need GNU Lib C runtime, Quick shared objec libxml2.
+
+How to install quickfix runtmime on Linux :
+		
+		1. Download from here : https://github.com/quickfix/quickfix
+		2. The process requires G++, libtool and autoconf. Get them for your distro.
+		3. After downloading and extracting the QuickFix library , navigate to that directory in console.
+		4. Type the commands below :
+					
+				./bootstrap
+				./configure
+				make
+				make install
+				
+		5. Add "/usr/local/lib" to /etc/ld.so.conf 
+		6. Run ldconfig.
 			
 **How to build the project on Linux :**
 	
