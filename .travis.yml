@@ -5,6 +5,7 @@ compiler:
 - gcc
 before_script:
 - cd build/linux
+- pwd
 script:
 - make release
 notifications:
