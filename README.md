@@ -3,7 +3,7 @@ http://en.wikipedia.org/wiki/Public_domain_software
 
 ===========================================================================
 			
-**The project description and technical information :** A multithreaded order matching engine written in C++11 using FIX protocol 4.2 . 
+**Introduction :** A multithreaded order matching engine written in C++11 using FIX protocol 4.2 . 
 
 - It targets both Linux ( tested on CentOS and Ubuntu ) and Windows systems ( tested on Windows 8.1).
 
@@ -18,6 +18,8 @@ http://en.wikipedia.org/wiki/Public_domain_software
 - See end of this readme for future plans.
 
 Detailed articles about the project and its implementation details will be available in my blog at www.nativecoding.wordpress.com.
+
+===========================================================================
 						
 **Limit orders and order matching engines :** For limit orders please see : https://en.wikipedia.org/wiki/Order_%28exchange%29#Limit_order
 
@@ -37,11 +39,15 @@ match the orders. And then it sends status reports back to the owners of the ord
 For general information about the trading systems and the order types , please see :
 http://www.investopedia.com/university/intro-to-order-types/
 
+===========================================================================
+
 **FIX ( Financial information exchange ) protocol :** It is a session based TCP protocol that carries financial security transcation data.
 
 For more information , please see https://en.wikipedia.org/wiki/Financial_Information_eXchange .
 
 For the time being, this projectis using opensource QuickFix engine and FIX specification 4.2.
+
+===========================================================================
 	
 **How multithreading is implemented for order matching:** If you look at the source , the concurrency layer ( "source/concurrent" , using concurrent word since MS using concurrency for their own libraries ) , 
 the engine currently is using 1 lock free SPSC ring buffer and other fine grained lock based ring buffer and queues. Also the engine currently makes use of a set of CPU cache aligned allocators for memory allocations. ( "source/memory" ).
@@ -78,6 +84,8 @@ and eventually trigger the order matching process for that queue. At the end of 
 
 4. Outgoing message processor which is a fine grained MPMC queue will process the outgoing messages.
 
+===========================================================================
+
 **How multithreading is implemented for order matching - Thread class & C++11:** The projects uses C++11 thread library for std::mutex and std::condition_variable and also std::lock_guard for scope based lock pattern. However I implemented a thread class using platform specific POSIX, NP POSIX and WindowsAPIs. The reasons are :
 
 	1. Ability to set thread stack size , neither Boost nor C++11 threads can do this.
@@ -112,6 +120,8 @@ GDB output in Linux showing named threads :
 	2    Thread 0x7ffff6cd5700 (LWP 20214) "LoggerThread" 0x000000000041e28a in std::unique_ptr<concurrent::RingBufferMPMC<utility::LogEntry>, std::default_delete<concurrent::RingBufferMPMC<utility::LogEntry> > >::operator-> (this=0x6abf70 <utility::Logger::getInstance()::instance+656>) at /usr/include/c++/4.8.2/bits/unique_ptr.h:229
 	1    Thread 0x7ffff7fe0740 (LWP 20213) "ome" main () at ../../source/server_main.cpp:65
 	
+===========================================================================
+	
 **Performance gain with multithreading, pinning and setting stack size :**
 For 8 symbols , I have fired 4224 orders on a Intel Haswell I7 quadcore processor on 64 bit Ubuntu. Here are the results :
 
@@ -131,6 +141,8 @@ For 8 symbols , I have fired 4224 orders on a Intel Haswell I7 quadcore processo
 						
 - QuickFix & its requirements : libxml2-devel & http://www.quickfixengine.org/quickfix/doc/html/install.html
 
+===========================================================================
+
 **Runtime dependencies :** For Windows, you have to install MSVC120 runtime : https://www.microsoft.com/en-gb/download/details.aspx?id=40784
 For Linux, you need GNU Lib C runtime, Quick shared objec libxml2.
 
@@ -148,12 +160,16 @@ How to install quickfix runtime on Linux :
 				
 		5. Add "/usr/local/lib" to /etc/ld.so.conf 
 		6. Run ldconfig.
+		
+===========================================================================
 			
 **How to build the project on Linux :**
 	
 	cd build/linux
 	make clean
 	make debug  OR make release
+	
+===========================================================================
 
 **How to build the project on Linux using Netbeans 8.0.2 C++ IDE:**
 
@@ -162,12 +178,16 @@ How to install quickfix runtime on Linux :
 	Build the project inside Netbeans IDE.
 
 Why Netbeans : In Netbeans, it is too straightforward to setup remote debugging, therefore it is quite convenient to build and debug on Linux from Windows via SSH and Samba. You can see an article about this setup here in my blog. It is for Debian but it should be trivial to apply it to any other distribution : https://nativecoding.wordpress.com/2014/10/24/configuring-a-debian-virtual-machine-for-linux-c-development-via-windows-step-by-step/
+
+===========================================================================
 	
 **How to build the project on Windows  :**
 	
 	You can build with Visual Studio 2013
 	Go to "build/windows" directory
 	Use SLN file to launch VS with the project
+	
+===========================================================================
 
 **Server parameters and running the matching engine :** The engine executable looks for "ome.ini" file. Here is the list of things you can set :
 
@@ -207,6 +227,8 @@ Once you start the ome executable , initially you will see a screen like this :
 
 				display : Shows all order books in the central order book
 				quit : Shutdowns the server
+				
+===========================================================================
 				
 **Example log message from the engine :** The engine produces log messages below when it receives 1 buy order with quantity 1 and 1 sell order with quantity 1 for the same symbol :
 
@@ -256,6 +278,8 @@ MiniFIX , http://elato.se/minifix/download.html , Windows only with a GUI
 
 QuickFixMessanger , https://github.com/jramoyo/quickfix-messenger
 
+===========================================================================
+
 **Functional testing :** There is a prebuilt executable for both Linux and Windows which can send specified ask/bid orders to the order matching engine.
    
    Under "test_functional" directory :
@@ -270,7 +294,11 @@ QuickFixMessanger , https://github.com/jramoyo/quickfix-messenger
 		
 		5. After firing the script, it will be executing all orders in test_data.txt file per client that is declared in the script file.
 		
+===========================================================================
+		
 **Unit testing :** The project uses GoogleTest 1.7. You can find a makefile and vcproj under "test_unit" directory.
+
+===========================================================================
 	
 **Building and running unit test on Linux :** You have to build and install Google Test 1.7 first , the instructions for CentOS and Ubuntu :
 			
@@ -288,8 +316,12 @@ QuickFixMessanger , https://github.com/jramoyo/quickfix-messenger
 			$ sudo cp -a lib/.libs/* /usr/lib/
 			
 			Then you can either use Makefile or Netbeans project files under "test_unit" directory.
+			
+===========================================================================
 
 **Building and running unit test on Windows :** You can use VisualStudio solution in "test_unit" directory.
+
+===========================================================================
 
 **Source code and file/directory naming conventions :**
 	
@@ -304,6 +336,8 @@ QuickFixMessanger , https://github.com/jramoyo/quickfix-messenger
 	variable names					pascalCase
 	member variables starts with	m_
 	directories/namespaces			As in Boost, there is a namespace per directory
+	
+===========================================================================
 
 **Source code indentations and new line usage :**
 	
@@ -311,10 +345,16 @@ QuickFixMessanger , https://github.com/jramoyo/quickfix-messenger
 	By default Netbeans editor uses spaces for tabs
 	Needs to be set in VS2013 : https://msdn.microsoft.com/en-gb/library/ms165330(v=vs.90).aspx
 	New lines : Unix CR only ( \n ) , VS can handle it even though Windows is \r\n
+	
+===========================================================================
 
 **Warning level used for GCC :** -Wall
 
+===========================================================================
+
 **Warning level used for MSVC :** /W3
+
+===========================================================================
 		
 **Precompiled header file usage :** On Windows , the project is using /FI ( Force include parameter, therefore no need to include the pch header everywhere ) and specified the pch header to be precompiled_header.h. Note that this breaks edit-and-continue in Visual Studio.
 For Linux , there is pch rule to enable it in the makefile ( build/linux/Makefile) , but currently that rule is not being used since it doesn`t appear as it is doing much improvement as on Windows.
@@ -323,6 +363,8 @@ For GCC see https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html
 
 For MSVC 120 see https://msdn.microsoft.com/en-us/library/8c5ztk84(v=vs.120).aspx
 
+===========================================================================
+
 **TODO for near future :**
 
 Benchmarking & Microbenchmarking : Will add probes for SystemTap for Linux, might add performance test cases using existing GoogleTest project
@@ -330,6 +372,8 @@ Benchmarking & Microbenchmarking : Will add probes for SystemTap for Linux, migh
 Concurrency : Lockfree containers , currently only SPSC bounded queue is lock free.
 
 Memory : 3rd party memory allocators support : jemalloc, intelTBB, tcMalloc, Lockless. Currently the engine is using a set of CPU cache aligned allocators in "source/memory".
+
+===========================================================================
 
 **Considerations for future :**
 
@@ -352,3 +396,5 @@ http://obt.hottolink.com/
 http://parasec.net/transmission/order-book-visualisation/
 
 New feature : Save events in a database
+
+===========================================================================
