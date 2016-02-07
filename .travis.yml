@@ -1,11 +1,31 @@
 language: cpp
 sudo: required
-dist: trusty
+
+env:
+  #matrix:
+  - OS_TYPE=centos OS_VERSION=6 ANSIBLE_VERSION=1.9.2
+
+branches:
+  only:
+  - master
+#  - stable
+
+services:
+  - docker
+  
+before_install:
+  - sudo apt-get update
+  - sudo apt-get upgrade lxc-docker
+  - echo 'DOCKER_OPTS="-H tcp://127.0.0.1:2375 -H unix:///var/run/docker.sock -s devicemapper"' | sudo tee /etc/default/docker > /dev/null
+  - sudo service docker restart
+  - sleep 5
+  - sudo docker pull weldpua2008/docker-ansible:${OS_TYPE}${OS_VERSION}_v${ANSIBLE_VERSION}
+
 compiler:
 - gcc
 before_script:
-- sudo chmod +x dependencies/quickfix/linux_compile_and_runtime/install_quickfix_runtime.sh
-- sudo dependencies/quickfix/linux_compile_and_runtime/install_quickfix_runtime.sh
+- sudo chmod +x dependencies/quickfix/linux_runtime/install_quickfix_runtime.sh
+- sudo dependencies/quickfix/linux_runtime/install_quickfix_runtime.sh
 script:
 - cd build/linux
 - export LIBRARY_PATH=/usr/local/lib/
