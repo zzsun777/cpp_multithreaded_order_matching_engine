@@ -22,7 +22,7 @@ Sections :
 	17. C++ Compiler warning levels
 	18. Precompiled header file usage for C++ compiler
 	19. TODO for near future
-	20. Consideration for future
+	20. Considerations for future
 
 ===========================================================================
 			
