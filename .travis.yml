@@ -4,6 +4,7 @@ dist: trusty
 compiler:
 - gcc
 before_script:
+- sudo apt-get install libquickfix-dev
 - cd build/linux
 - pwd
 script:
