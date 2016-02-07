@@ -169,7 +169,8 @@ For 8 symbols , I have fired 4224 orders on a Intel Haswell I7 quadcore processo
 ===========================================================================
 
 **Runtime dependencies :** For Windows, you have to install MSVC120 runtime : https://www.microsoft.com/en-gb/download/details.aspx?id=40784
-For Linux, you need GNU Lib C runtime, Quick shared objec libxml2.
+
+For Linux, you need GNU Lib C runtime and QuickFIX runtime.
 
 How to install Quickfix runtime on Linux ( tested on Ubuntu ) :
 
