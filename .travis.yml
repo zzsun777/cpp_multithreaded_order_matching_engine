@@ -4,6 +4,7 @@ dist: trusty
 compiler:
 - gcc
 before_script:
+- sudo apt-get update
 - sudo apt-get install apt-file
 - sudo apt-file update
 - sudo apt-file find libquickfix-dev
