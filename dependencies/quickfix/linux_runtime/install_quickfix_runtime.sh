@@ -1,7 +1,6 @@
 #!/bin/bash
 
 SHARED_OBJECT_NAME=libquickfix.so.16.0.1
-STATIC_LIBRARY_NAME=libquickfix.la
 SHARED_OBJECT_LINK1=libquickfix.so
 SHARED_OBJECT_LINK2=libquickfix.so.16
 SO_RUNTIME_DIR=/usr/local/lib
@@ -16,7 +15,6 @@ function append_to_end_of_file()
 
 # Step 1. Copy shared object and the static library to /usr/local/lib
 sudo cp $SHARED_OBJECT_NAME $SO_RUNTIME_DIR
-sudo cp $STATIC_LIBRARY_NAME $SO_RUNTIME_DIR
 # Step 2. Create soft links 
 sudo ln -sf $SO_RUNTIME_DIR/$SHARED_OBJECT_NAME $SO_RUNTIME_DIR/$SHARED_OBJECT_LINK1
 sudo ln -sf $SO_RUNTIME_DIR/$SHARED_OBJECT_NAME $SO_RUNTIME_DIR/$SHARED_OBJECT_LINK2
