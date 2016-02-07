@@ -5,7 +5,6 @@
 #include <atomic>
 #include <utility>
 #include <memory>
-#include <utility>
 #include <boost/noncopyable.hpp>
 
 namespace concurrent
