@@ -111,6 +111,17 @@ GDB output in Linux showing named threads :
 	3    Thread 0x7ffff64d4700 (LWP 20215) "MSFT" 0x00007ffff6d9348d in nanosleep () from /lib64/libc.so.6
 	2    Thread 0x7ffff6cd5700 (LWP 20214) "LoggerThread" 0x000000000041e28a in std::unique_ptr<concurrent::RingBufferMPMC<utility::LogEntry>, std::default_delete<concurrent::RingBufferMPMC<utility::LogEntry> > >::operator-> (this=0x6abf70 <utility::Logger::getInstance()::instance+656>) at /usr/include/c++/4.8.2/bits/unique_ptr.h:229
 	1    Thread 0x7ffff7fe0740 (LWP 20213) "ome" main () at ../../source/server_main.cpp:65
+	
+**Performance gain with multithreading, pinning and setting stack size :**
+For 8 symbols , I have fired 4224 orders on a Intel Haswell I7 quadcore processor on 64 bit Ubuntu. Here are the results :
+
+	SingleThreaded : 35345 milliseconds
+
+	Multithreaded , Hyperthreading On, Pinning Off, Stack Size=Default : 30663 milliseconds
+
+	Multithreaded, Hyperthreading off, Pinning On, Stack Size = Default : 30130 milli seconds
+
+	Multithreaded, Hyperthreading off, Pinning On, Stack Size = 4096 bytes : 27323 milliseconds
 
 **Build dependencies :** For Linux , the project is built and tested with GCC4.8. As for Windows it is using MSVC1200(VS2013). In the libraries side :
 
