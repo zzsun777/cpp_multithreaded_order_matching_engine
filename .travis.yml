@@ -1,6 +1,6 @@
 language: cpp
 sudo: required
-dist:el/7
+dist: el/7
 compiler:
 - gcc
 before_script:
