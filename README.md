@@ -155,21 +155,23 @@ For 8 symbols , I have fired 4224 orders on a Intel Haswell I7 quadcore processo
 	Multithreaded, Hyperthreading off, Pinning On, Stack Size = Default : 30130 milli seconds
 
 	Multithreaded, Hyperthreading off, Pinning On, Stack Size = 4096 bytes : 27323 milliseconds
+	
+===========================================================================
 
-**Build dependencies :** For Linux , the project is built and tested with GCC4.8. As for Windows it is using MSVC1200(VS2013). In the libraries side :
+**Build dependencies :** For Linux , the project is built and tested with GCC4.8 only on CentOS7. As for Windows it is using MSVC1200(VS2013). In the libraries side :
 
-- Boost 1.59 : using a compacted version by using the command below :
+- Boost 1.59 : Using only template based part of Boost and a compacted version of Boost is in dependencies directory, therefore you don`t need to do anything. The compacting command is as below  :
 
 				bcp --boost=c:\boost_1_59_0 shared_ptr scoped_ptr any optional tokenizer format c:\boost
 						
-- QuickFix & its requirements : libxml2-devel & http://www.quickfixengine.org/quickfix/doc/html/install.html
+- QuickFix & its requirements : Please do the steps on http://www.quickfixengine.org/quickfix/doc/html/install.html
 
 ===========================================================================
 
 **Runtime dependencies :** For Windows, you have to install MSVC120 runtime : https://www.microsoft.com/en-gb/download/details.aspx?id=40784
 For Linux, you need GNU Lib C runtime, Quick shared objec libxml2.
 
-How to install quickfix runtime on Linux :
+How to install Quickfix runtime on Linux ( tested on Ubuntu ) :
 
 		1. Navigate to dependencies/quickfix/linux_runtime
 		2. sudo chmod +x ./install_quickfix_runtime.sh
