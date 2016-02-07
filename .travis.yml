@@ -5,10 +5,10 @@ compiler:
 - gcc
 before_script:
 - sudo apt-get update
-- sudo apt-get install apt-file
+- sudo apt-get install -y apt-file
 - sudo apt-file update
 - sudo apt-file find libquickfix-dev
-- sudo apt-get install libquickfix-dev
+- sudo apt-get install -y libquickfix-dev
 - cd build/linux
 - pwd
 script:
