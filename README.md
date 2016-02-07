@@ -1,6 +1,29 @@
 Licence : All samples are "Public Domain" code 
 http://en.wikipedia.org/wiki/Public_domain_software
 
+Sections :
+
+	1. Introduction
+	2. Limit orders and order matching engines
+	3. FIX ( Financial Information Exchange ) protocol
+	4. Multithreading implementation overview
+	5. Multithreading implementation , thread class
+	6. Performance gain , benchmark results
+	7. Runtime dependencies
+	8. How to build on Linux
+	9. How to build on Linux with Netbeans
+	10. How to build on Windows
+	11. Server parameters and running the server
+	12. Example log messages with FIX 
+	13. Functional testing
+	14. Unit testing with GoogleTest
+	15. Source code naming conventions 
+	16. Source code files : EOL, spaces
+	17. C++ Compiler warning levels
+	18. Precompiled header file usage for C++ compiler
+	19. TODO for near future
+	20. Consideration for future
+
 ===========================================================================
 			
 **Introduction :** A multithreaded order matching engine written in C++11 using FIX protocol 4.2 . 
