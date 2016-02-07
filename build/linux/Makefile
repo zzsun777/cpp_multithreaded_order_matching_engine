@@ -30,7 +30,7 @@ EXECUTABLE = ../../bin/ome
 #Compiler flags
 CFLAGS= -I$(INCLUDE_DIR) -I$(INCLUDE_DIR_BOOST) -I$(INCLUDE_DIR_QUICKFIX) -std=c++11 -c
 #Linker flags
-LFLAGS= -lstdc++ -pthread -lquickfix
+LFLAGS= -lstdc++ -pthread -L../../dependencies/quickfix/linux_compile_and_runtime -lquickfix
 
 #Add DEBUG macro , symbol generation and show all warnings
 debug: CFLAGS += -DDEBUG -g -Wall 
