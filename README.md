@@ -6,21 +6,20 @@ Sections :
 	1. Introduction
 	2. Limit orders and order matching engines
 	3. FIX ( Financial Information Exchange ) protocol
-	4. Multithreading implementation details & performance gain
-	5. Runtime dependencies
-	6. How to build on Linux
-	7. How to build on Linux with Netbeans
-	8. How to build on Windows
-	9. Server parameters and running the server
-	10. Example log messages with FIX 
-	11. Functional testing
-	12. Unit testing with GoogleTest
-	13. Source code naming conventions 
-	14. Source code files : EOL, spaces
-	15. C++ Compiler warning levels
-	16. Precompiled header file usage for C++ compiler
-	17. TODO for near future
-	18. Considerations for future
+	4. Runtime dependencies
+	5. How to build on Linux
+	6. How to build on Linux with Netbeans
+	7. How to build on Windows
+	8. Server parameters and running the server
+	9. Example log messages with FIX 
+	10. Functional testing
+	11. Unit testing with GoogleTest
+	12. Source code naming conventions 
+	13. Source code files : EOL, spaces
+	14. C++ Compiler warning levels
+	15. Precompiled header file usage for C++ compiler
+	16. TODO for near future
+	17. Considerations for future
 
 ===========================================================================
 			
@@ -37,6 +36,10 @@ Sections :
 - Currently supports only limit orders and currently doesn`t support TIF.
 
 - See end of this readme for future plans.
+
+Regarding the implementation details and performance gain in multithreading and other considerations , please see the article on :
+
+https://nativecoding.wordpress.com/2016/02/07/multithreading-considerations-in-an-order-matching-engine/
 
 ===========================================================================
 						
@@ -65,12 +68,6 @@ http://www.investopedia.com/university/intro-to-order-types/
 For more information , please see https://en.wikipedia.org/wiki/Financial_Information_eXchange .
 
 For the time being, this projectis using opensource QuickFix engine and FIX specification 4.2.
-
-===========================================================================
-	
-**How multithreading is implemented for order matching:** Regarding the implementation details and performance gain in multithreading and other considerations , please see the article on :
-
-https://nativecoding.wordpress.com/2016/02/07/multithreading-considerations-in-an-order-matching-engine/
 	
 ===========================================================================
 
