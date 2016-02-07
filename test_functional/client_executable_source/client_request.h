@@ -1,5 +1,5 @@
-#ifndef _CLIENT_REQUEST_
-#define _CLIENT_REQUEST_
+#ifndef _CLIENT_REQUEST_H_
+#define _CLIENT_REQUEST_H_
 
 #include <atomic>
 #include <string>
