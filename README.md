@@ -170,19 +170,12 @@ For 8 symbols , I have fired 4224 orders on a Intel Haswell I7 quadcore processo
 For Linux, you need GNU Lib C runtime, Quick shared objec libxml2.
 
 How to install quickfix runtime on Linux :
+
+		1. Navigate to dependencies/quickfix/linux_compile_and_runtime
+		2. sudo chmod +x ./install_quickfix_runtime.sh
+		3. sudo ./install_quickfix_runtime.sh
 		
-		1. Download from here : https://github.com/quickfix/quickfix
-		2. The process requires G++, libtool and autoconf. Get them for your distro.
-		3. After downloading and extracting the QuickFix library , navigate to that directory in console.
-		4. Type the commands below :
-					
-				./bootstrap
-				./configure
-				make
-				make install
-				
-		5. Add "/usr/local/lib" to /etc/ld.so.conf 
-		6. Run ldconfig.
+Note : This script will copy shared object to library path, create soft links, will add library path to /etc/ld.so.conf and finally execute ldconfig.
 		
 ===========================================================================
 			

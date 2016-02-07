@@ -4,9 +4,11 @@ dist: trusty
 compiler:
 - gcc
 before_script:
-- cd build/linux
+- sudo chmod +x dependencies/quickfix/linux_compile_and_runtime.sh
+- sudo dependencies/quickfix/linux_compile_and_runtime.sh
 script:
-- make release
+- cd build/linux
+- make clean && make release
 notifications:
   email:
     - akin_ocal@hotmail.com
