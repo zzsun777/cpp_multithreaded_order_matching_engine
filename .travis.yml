@@ -9,7 +9,4 @@ script:
 - make release
 notifications:
   email:
-    recipients:
-      - akin_ocal@hotmail.com
-      on_success: always
-      on_failure: always
+    - akin_ocal@hotmail.com
