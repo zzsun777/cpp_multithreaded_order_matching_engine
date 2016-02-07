@@ -4,8 +4,8 @@ dist: trusty
 compiler:
 - gcc
 before_script:
-- sudo chmod +x dependencies/quickfix/linux_compile_and_runtime.sh
-- sudo dependencies/quickfix/linux_compile_and_runtime.sh
+- sudo chmod +x dependencies/quickfix/linux_compile_and_runtime/install_quickfix_runtime.sh
+- sudo dependencies/quickfix/linux_compile_and_runtime/install_quickfix_runtime.sh
 script:
 - cd build/linux
 - make clean && make release
