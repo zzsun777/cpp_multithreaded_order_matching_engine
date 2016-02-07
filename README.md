@@ -171,7 +171,7 @@ For Linux, you need GNU Lib C runtime, Quick shared objec libxml2.
 
 How to install quickfix runtime on Linux :
 
-		1. Navigate to dependencies/quickfix/linux_compile_and_runtime
+		1. Navigate to dependencies/quickfix/linux_runtime
 		2. sudo chmod +x ./install_quickfix_runtime.sh
 		3. sudo ./install_quickfix_runtime.sh
 		
