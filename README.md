@@ -418,6 +418,10 @@ http://obt.hottolink.com/
 
 http://parasec.net/transmission/order-book-visualisation/
 
+Valve is sponsoring LunarG which is working on Vulkan drivers and SDK which is likely to be available on 2016 :
+
+http://lunarg.com/vulkan/
+
 New feature : Save events in a database
 
 ===========================================================================
