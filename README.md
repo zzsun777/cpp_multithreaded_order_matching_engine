@@ -55,9 +55,9 @@ match the orders. And then it sends status reports back to the owners of the ord
 
 - "accepted" : the server accepted the order and it will be processed
 - "filled" : the order matched
-- "partially filled" , meaning that some trading happened , but still more to googlecode
+- "partially filled" , meaning that some trading happened , but still more to process
 - "rejected" , if order type is not supported.
-- "canceled" , if a client wants to cancel an order ,and if the order is canceld , the server informs the client
+- "canceled" , if a client wants to cancel an order ,and if the order is canceled , the server informs the client
 
 For general information about the trading systems and the order types , please see :
 http://www.investopedia.com/university/intro-to-order-types/
