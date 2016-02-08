@@ -249,17 +249,17 @@ Building and running unit test on Windows : You can use VisualStudio solution in
 
 Source code and file/directory naming conventions :
 	
-	directory names					lower_case_word
-	file names 						lower_case_word
-	include guards 					_HEADER_H_
-	macros							UPPER_CASE_WORD
-	enums							UPPER_CASE_WORD
-	namespace names 				lower_case_word
-	class names 					CamelCase
-	method names 					pascalCase
-	variable names					pascalCase
-	member variables starts with	m_
-	directories/namespaces			As in Boost, there is a namespace per directory
+	Directory names					lower_case_word
+	File names 						lower_case_word
+	Include guards 					_HEADER_H_
+	Macros							UPPER_CASE_WORD
+	Enums							UPPER_CASE_WORD
+	Namespace names 				lower_case_word
+	Class names 					CamelCase
+	Method names 					pascalCase
+	Variable names					pascalCase
+	Member variables starts with	m_
+	Directories/Namespaces			As in Boost, there is a namespace per directory
 
 Source code indentations and new line usage :
 	
