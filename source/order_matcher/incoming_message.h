@@ -28,7 +28,7 @@ class IncomingMessage : public memory::Aligned<>
         const Order& getOrder() const { return m_order; }
         const IncomingMessageType& getType() const { return m_type; }
         const std::string& getOrigClientOrderID() const { return m_originalOrderID; }
-		
+        
         std::string toString() const throw(std::invalid_argument)
         {
             switch (m_type)
@@ -44,8 +44,8 @@ class IncomingMessage : public memory::Aligned<>
                     break;
             }
         }
-		
-	private:
+        
+    private:
         Order m_order;
         std::string m_originalOrderID; // Only applies to cancel messages
         IncomingMessageType m_type;
