@@ -6,17 +6,15 @@ Sections :
 	1. Introduction
 	2. Limit orders and order matching engines
 	3. FIX ( Financial Information Exchange ) protocol
-	4. Runtime dependencies
-	5. How to build on Linux
-	6. How to build on Linux with Netbeans
-	7. How to build on Windows
-	8. Server parameters and running the server
-	9. Example log messages with FIX 
-	10. Functional testing
-	11. Unit testing with GoogleTest
-	12. Coding and other guidelines
-	13. TODO for near future
-	14. Considerations for future
+	4. Build dependencies
+	5. Runtime dependencies
+	6. How to build
+	7. Server parameters and running the server
+	8. Example log messages with FIX 
+	9. Functional testing
+	10. Unit testing with GoogleTest
+	11. Coding and other guidelines
+	12. TODO List
 
 ===========================================================================
 			
@@ -91,26 +89,24 @@ How to install Quickfix runtime on Linux ( tested on Ubuntu ) :
 Note : This script will copy shared object to library path, create soft links, will add library path to /etc/ld.so.conf and finally execute ldconfig.
 		
 ===========================================================================
+
+**HOW TO BUILD :**
 			
-**How to build the project on Linux :**
+How to build the project on Linux :
 	
 	cd build/linux
 	make clean
 	make debug  OR make release
-	
-===========================================================================
 
-**How to build the project on Linux using Netbeans 8.0.2 C++ IDE:**
+How to build the project on Linux using Netbeans 8.0.2 C++ IDE:
 
 	Open Netbeans.
 	Open the project from the project directory. ( Choose "nbproject" directory )
 	Build the project inside Netbeans IDE.
 
 Why Netbeans : In Netbeans, it is too straightforward to setup remote debugging, therefore it is quite convenient to build and debug on Linux from Windows via SSH and Samba. You can see an article about this setup here in my blog. It is for Debian but it should be trivial to apply it to any other distribution : https://nativecoding.wordpress.com/2014/10/24/configuring-a-debian-virtual-machine-for-linux-c-development-via-windows-step-by-step/
-
-===========================================================================
 	
-**How to build the project on Windows  :**
+How to build the project on Windows  :
 	
 	You can build with Visual Studio 2013
 	Go to "build/windows" directory
@@ -225,11 +221,10 @@ QuickFixMessanger , https://github.com/jramoyo/quickfix-messenger
 		
 ===========================================================================
 		
-**Unit testing :** The project uses GoogleTest 1.7. You can find a makefile and vcproj under "test_unit" directory.
+**UNIT TESTING WITH GOOGLETEST :** The project uses GoogleTest 1.7. You can find a makefile and vcproj under "test_unit" directory.
 
-===========================================================================
 	
-**Building and running unit test on Linux :** You have to build and install Google Test 1.7 first , the instructions for CentOS and Ubuntu :
+Building and running unit test on Linux : You have to build and install Google Test 1.7 first , the instructions for CentOS and Ubuntu :
 			
 			$ wget http://googletest.googlecode.com/files/gtest-1.7.0.zip
 			$ unzip gtest-1.7.0.zip
@@ -245,10 +240,8 @@ QuickFixMessanger , https://github.com/jramoyo/quickfix-messenger
 			$ sudo cp -a lib/.libs/* /usr/lib/
 			
 			Then you can either use Makefile or Netbeans project files under "test_unit" directory.
-			
-===========================================================================
 
-**Building and running unit test on Windows :** You can use VisualStudio solution in "test_unit" directory.
+Building and running unit test on Windows : You can use VisualStudio solution in "test_unit" directory.
 
 ===========================================================================
 
@@ -288,7 +281,7 @@ For MSVC 120 see https://msdn.microsoft.com/en-us/library/8c5ztk84(v=vs.120).asp
 
 ===========================================================================
 
-**TODO for near future :**
+**TODO LIST :**
 
 Benchmarking & Microbenchmarking : Will add probes for SystemTap for Linux, might add performance test cases using existing GoogleTest project
 
@@ -296,9 +289,8 @@ Concurrency : Lockfree containers , currently only SPSC bounded queue is lock fr
 
 Memory : 3rd party memory allocators support : jemalloc, intelTBB, tcMalloc, Lockless. Currently the engine is using a set of CPU cache aligned allocators in "source/memory".
 
-===========================================================================
 
-**Considerations for future :**
+Other Considerations for future :
 
 Order matching : Adding other order types ( market orders, stop loss order) , order update and market data request support, TIF support
 
