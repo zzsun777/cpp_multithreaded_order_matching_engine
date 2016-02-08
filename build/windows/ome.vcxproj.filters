@@ -95,7 +95,7 @@
     <ClInclude Include="..\..\source\server\server_outgoing_message_processor.h">
       <Filter>server</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\memory\aligned_container_policy.h">
+    <ClInclude Include="..\..\source\memory\aligned_container_policy.hpp">
       <Filter>memory</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\utility\observer.hpp">

@@ -3,7 +3,7 @@
 
 #include <boost/noncopyable.hpp>
 #include <mutex>
-#include <memory/aligned_container_policy.h>
+#include <memory/aligned_container_policy.hpp>
 
 namespace concurrent
 {

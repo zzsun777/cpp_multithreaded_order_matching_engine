@@ -18,7 +18,7 @@ Sections :
 
 ===========================================================================
 			
-**Introduction :** A multithreaded order matching engine written in C++11 using FIX protocol 4.2 . 
+**1. Introduction :** A multithreaded order matching engine written in C++11 using FIX protocol 4.2 . 
 
 - It targets both Linux ( tested on CentOS and Ubuntu ) and Windows systems ( tested on Windows 8.1).
 
@@ -38,7 +38,7 @@ https://nativecoding.wordpress.com/2016/02/07/multithreading-considerations-in-a
 
 ===========================================================================
 						
-**Limit orders and order matching engines :** For limit orders please see : https://en.wikipedia.org/wiki/Order_%28exchange%29#Limit_order
+**2. Limit orders and order matching engines :** For limit orders please see : https://en.wikipedia.org/wiki/Order_%28exchange%29#Limit_order
 
 Basically a limit order is an order which you specify a maximum price for the security you want to buy. 
 As for the terminology a limit order to buy is called a "bid" and a limit order to sell is called an "ask".
@@ -58,7 +58,7 @@ http://www.investopedia.com/university/intro-to-order-types/
 
 ===========================================================================
 
-**FIX ( Financial information exchange ) protocol :** It is a session based TCP protocol that carries financial security transcation data.
+**3. FIX ( Financial information exchange ) protocol :** It is a session based TCP protocol that carries financial security transcation data.
 
 For more information , please see https://en.wikipedia.org/wiki/Financial_Information_eXchange .
 
@@ -66,7 +66,13 @@ For the time being, this projectis using opensource QuickFix engine and FIX spec
 	
 ===========================================================================
 
-**Build dependencies :** For Linux , the project is built and tested with GCC4.8 only on CentOS7. As for Windows it is using MSVC1200(VS2013). In the libraries side :
+**4. Build dependencies :** For Linux , the project is built and tested with GCC4.8 only on CentOS7. 
+
+As for Windows it is using MSVC1200(VS2013). An important note about VS2013 , its version shouldn`t be later then Update2 as the project is using C++11 curly brace initialisation and MSVC rollbacked that feature starting from Update3 :
+
+https://connect.microsoft.com/VisualStudio/feedbackdetail/view/938122/list-initialization-inside-member-initializer-list-or-non-static-data-member-initializer-is-not-implemented
+
+In the libraries side :
 
 - Boost 1.59 : Using only template based part of Boost and a compacted version of Boost is in dependencies directory, therefore you don`t need to do anything. The compacting command is as below  :
 
@@ -76,7 +82,7 @@ For the time being, this projectis using opensource QuickFix engine and FIX spec
 
 ===========================================================================
 
-**Runtime dependencies :** For Windows, you have to install MSVC120 runtime : https://www.microsoft.com/en-gb/download/details.aspx?id=40784
+**5. Runtime dependencies :** For Windows, you have to install MSVC120 runtime : https://www.microsoft.com/en-gb/download/details.aspx?id=40784
 
 For Linux, you need GNU Lib C runtime and QuickFIX runtime.
 
@@ -90,7 +96,7 @@ Note : This script will copy shared object to library path, create soft links, w
 		
 ===========================================================================
 
-**How to build :**
+**6. How to build :**
 			
 How to build the project on Linux :
 	
@@ -114,7 +120,7 @@ How to build the project on Windows  :
 	
 ===========================================================================
 
-**Server parameters and running the matching engine :** The engine executable looks for "ome.ini" file. Here is the list of things you can set :
+**7. Server parameters and running the matching engine :** The engine executable looks for "ome.ini" file. Here is the list of things you can set :
 
 		- FILE_LOGGING_ENABLED							enables/disables logging
 		- CONSOLE_OUTPUT_ENABLED						enables/disables output to stdout
@@ -155,7 +161,7 @@ Once you start the ome executable , initially you will see a screen like this :
 				
 ===========================================================================
 				
-**Example log message from the engine :** The engine produces log messages below when it receives 1 buy order with quantity 1 and 1 sell order with quantity 1 for the same symbol :
+**8. Example log message from the engine :** The engine produces log messages below when it receives 1 buy order with quantity 1 and 1 sell order with quantity 1 for the same symbol :
 
 	06-02-2016 20:16:09 : INFO , FIX Engine , New logon , session ID : FIX.4.2:OME->TEST_CLIENT1
 	06-02-2016 20:16:09 : INFO , FIX Engine , Sending fix message : 8=FIX.4.29=15435=834=543=Y49=OME52=20160206-20:16:09.29556=TEST_CLIENT1122=20160206-20:15:03.9556=011=414=017=1820=037=438=139=054=155=MSFT150=0151=110=000
@@ -205,7 +211,7 @@ QuickFixMessanger , https://github.com/jramoyo/quickfix-messenger
 
 ===========================================================================
 
-**Functional testing :** There is a prebuilt executable for both Linux and Windows which can send specified ask/bid orders to the order matching engine.
+**9. Functional testing :** There is a prebuilt executable for both Linux and Windows which can send specified ask/bid orders to the order matching engine.
    
    Under "test_functional" directory :
    
@@ -221,7 +227,7 @@ QuickFixMessanger , https://github.com/jramoyo/quickfix-messenger
 		
 ===========================================================================
 		
-**Unit testing with GoogleTest :** The project uses GoogleTest 1.7. You can find a makefile and vcproj under "test_unit" directory.
+**10. Unit testing with GoogleTest :** The project uses GoogleTest 1.7. You can find a makefile and vcproj under "test_unit" directory.
 
 	
 Building and running unit test on Linux : You have to build and install Google Test 1.7 first , the instructions for CentOS and Ubuntu :
@@ -245,7 +251,7 @@ Building and running unit test on Windows : You can use VisualStudio solution in
 
 ===========================================================================
 
-**Coding and other guidelines :**
+**11. Coding and other guidelines :**
 
 Source code and file/directory naming conventions :
 	
@@ -281,7 +287,7 @@ For MSVC 120 see https://msdn.microsoft.com/en-us/library/8c5ztk84(v=vs.120).asp
 
 ===========================================================================
 
-**Todo List :**
+**12. Todo List :**
 
 Benchmarking & Microbenchmarking : Will add probes for SystemTap for Linux, might add performance test cases using existing GoogleTest project
 

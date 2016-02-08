@@ -121,7 +121,7 @@
     <ClInclude Include="..\..\source\concurrent\thread_pool.h" />
     <ClInclude Include="..\..\source\memory\aligned.hpp" />
     <ClInclude Include="..\..\source\memory\aligned_allocator.hpp" />
-    <ClInclude Include="..\..\source\memory\aligned_container_policy.h" />
+    <ClInclude Include="..\..\source\memory\aligned_container_policy.hpp" />
     <ClInclude Include="..\..\source\memory\aligned_memory.h" />
     <ClInclude Include="..\..\source\memory\cache_line.h" />
     <ClInclude Include="..\..\source\memory\debugging\hardware_breakpoint.h" />
