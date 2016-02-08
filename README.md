@@ -68,7 +68,7 @@ For the time being, this projectis using opensource QuickFix engine and FIX spec
 
 **4. Build dependencies :** For Linux , the project is built and tested with GCC4.8 only on CentOS7. 
 
-As for Windows it is using MSVC1200(VS2013). An important note about VS2013 , its version shouldn`t be later then Update2 as the project is using C++11 curly brace initialisation and MSVC rollbacked that feature starting from Update3 :
+As for Windows it is using MSVC1200(VS2013). An important note about VS2013 , its version shouldn`t be later then Update2 as the project is using C++11 curly brace initialisation in MILs and MSVC rollbacked that feature starting from Update3 :
 
 https://connect.microsoft.com/VisualStudio/feedbackdetail/view/938122/list-initialization-inside-member-initializer-list-or-non-static-data-member-initializer-is-not-implemented
 

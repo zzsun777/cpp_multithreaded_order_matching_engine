@@ -1,6 +1,7 @@
 #ifndef _TRACE_H_
 #define _TRACE_H_
 
+#include <cstdarg>
 #include <cstring>
 #include <cstdio>
 #include <memory>

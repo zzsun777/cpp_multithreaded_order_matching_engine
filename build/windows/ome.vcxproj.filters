@@ -185,6 +185,9 @@
     <ClInclude Include="..\..\source\utility\pretty_exception.h">
       <Filter>utility</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\compiler_portability\ignored_warnings.h">
+      <Filter>compiler_portability</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="concurrent">
