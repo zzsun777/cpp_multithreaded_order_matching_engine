@@ -1,5 +1,5 @@
-#ifndef _PRETTY_EXCEPTION_
-#define _PRETTY_EXCEPTION_
+#ifndef _PRETTY_EXCEPTION_H_
+#define _PRETTY_EXCEPTION_H_
 
 #include <exception>
 #include <string>
