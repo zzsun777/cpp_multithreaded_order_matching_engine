@@ -14,12 +14,9 @@ Sections :
 	9. Example log messages with FIX 
 	10. Functional testing
 	11. Unit testing with GoogleTest
-	12. Source code naming conventions 
-	13. Source code files : EOL, spaces
-	14. C++ Compiler warning levels
-	15. Precompiled header file usage for C++ compiler
-	16. TODO for near future
-	17. Considerations for future
+	12. Coding and other guidelines
+	13. TODO for near future
+	14. Considerations for future
 
 ===========================================================================
 			
@@ -255,7 +252,9 @@ QuickFixMessanger , https://github.com/jramoyo/quickfix-messenger
 
 ===========================================================================
 
-**Source code and file/directory naming conventions :**
+**CODING AND OTHER GUIDELINES :**
+
+Source code and file/directory naming conventions :
 	
 	directory names					lower_case_word
 	file names 						lower_case_word
@@ -268,27 +267,19 @@ QuickFixMessanger , https://github.com/jramoyo/quickfix-messenger
 	variable names					pascalCase
 	member variables starts with	m_
 	directories/namespaces			As in Boost, there is a namespace per directory
-	
-===========================================================================
 
-**Source code indentations and new line usage :**
+Source code indentations and new line usage :
 	
 	Space based no tabs ( This needs to be setup in VS )
 	By default Netbeans editor uses spaces for tabs
 	Needs to be set in VS2013 : https://msdn.microsoft.com/en-gb/library/ms165330(v=vs.90).aspx
 	New lines : Unix CR only ( \n ) , VS can handle it even though Windows is \r\n
 	
-===========================================================================
+Warning level used for GCC : -Wall
 
-**Warning level used for GCC :** -Wall
-
-===========================================================================
-
-**Warning level used for MSVC :** /W3
-
-===========================================================================
+Warning level used for MSVC : /W3
 		
-**Precompiled header file usage :** On Windows , the project is using /FI ( Force include parameter, therefore no need to include the pch header everywhere ) and specified the pch header to be precompiled_header.h. Note that this breaks edit-and-continue in Visual Studio.
+Precompiled header file usage : On Windows , the project is using /FI ( Force include parameter, therefore no need to include the pch header everywhere ) and specified the pch header to be precompiled_header.h. Note that this breaks edit-and-continue in Visual Studio.
 For Linux , there is pch rule to enable it in the makefile ( build/linux/Makefile) , but currently that rule is not being used since it doesn`t appear as it is doing much improvement as on Windows.
 
 For GCC see https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html
