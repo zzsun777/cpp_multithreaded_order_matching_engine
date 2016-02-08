@@ -290,7 +290,7 @@ Concurrency : Lockfree containers , currently only SPSC bounded queue is lock fr
 Memory : 3rd party memory allocators support : jemalloc, intelTBB, tcMalloc, Lockless. Currently the engine is using a set of CPU cache aligned allocators in "source/memory".
 
 
-**Other Considerations for future :**
+**Other considerations for future :**
 
 Order matching : Adding other order types ( market orders, stop loss order) , order update and market data request support, TIF support
 
