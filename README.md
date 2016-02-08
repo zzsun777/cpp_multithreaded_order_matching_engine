@@ -90,7 +90,7 @@ Note : This script will copy shared object to library path, create soft links, w
 		
 ===========================================================================
 
-**HOW TO BUILD :**
+**How to build :**
 			
 How to build the project on Linux :
 	
@@ -221,7 +221,7 @@ QuickFixMessanger , https://github.com/jramoyo/quickfix-messenger
 		
 ===========================================================================
 		
-**UNIT TESTING WITH GOOGLETEST :** The project uses GoogleTest 1.7. You can find a makefile and vcproj under "test_unit" directory.
+**Unit testing with GoogleTest :** The project uses GoogleTest 1.7. You can find a makefile and vcproj under "test_unit" directory.
 
 	
 Building and running unit test on Linux : You have to build and install Google Test 1.7 first , the instructions for CentOS and Ubuntu :
@@ -245,7 +245,7 @@ Building and running unit test on Windows : You can use VisualStudio solution in
 
 ===========================================================================
 
-**CODING AND OTHER GUIDELINES :**
+**Coding and other guidelines :**
 
 Source code and file/directory naming conventions :
 	
@@ -281,7 +281,7 @@ For MSVC 120 see https://msdn.microsoft.com/en-us/library/8c5ztk84(v=vs.120).asp
 
 ===========================================================================
 
-**TODO LIST :**
+**Todo List :**
 
 Benchmarking & Microbenchmarking : Will add probes for SystemTap for Linux, might add performance test cases using existing GoogleTest project
 
