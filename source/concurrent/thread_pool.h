@@ -38,7 +38,7 @@ struct ThreadPoolArguments
     {}
 };
 
-class ThreadPool : boost::noncopyable
+class ThreadPool : public boost::noncopyable
 {
     public :
         ThreadPool() : m_numOfThreads(0) { m_isShuttingDown.store(false); }

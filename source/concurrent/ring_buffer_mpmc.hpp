@@ -67,7 +67,7 @@ class RingBufferMPMC : public boost::noncopyable
         }
 
     private:
-        size_t m_capacity;
+        std::size_t m_capacity;
 
         int m_front;
         int m_rear;
