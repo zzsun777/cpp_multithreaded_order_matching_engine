@@ -1,7 +1,6 @@
 #include <exception>
 #include <iostream>
 #include <cstdlib>
-using namespace std;
 
 #include <utility/config_file.h>
 #include <utility/single_instance.h>
@@ -9,17 +8,17 @@ using namespace std;
 #include <utility/file_utility.h>
 #include <server/server.h>
 
-void onError(const string& message, int exit_code);
+using namespace std;
 
-namespace program_errors
-{
-    const int INVALID_CONFIG_FILE = 1;
-    const int ALREADY_RUNNING = 2;
-    const int RUNTIME_ERROR = 3;
-    const int INSUFFICIENT_MEMORY = 4;
-    const int UNKNOWN_PROBLEM = 5;
-}
+enum class ProgramErrorType { 
+                            INVALID_CONFIG_FILE, 
+                            ALREADY_RUNNING,  
+                            RUNTIME_ERROR,
+                            INSUFFICIENT_MEMORY,
+                            UNKNOWN_PROBLEM
+                         };
 
+void onError(const string& message, ProgramErrorType errorType);
 
 int main ()
 {
@@ -54,11 +53,11 @@ int main ()
     }
     catch (std::invalid_argument & e)
     {
-        onError(e.what(), program_errors::INVALID_CONFIG_FILE);
+        onError(e.what(), ProgramErrorType::INVALID_CONFIG_FILE);
     }
     catch (std::runtime_error & e)
     {
-        onError(e.what(), program_errors::INVALID_CONFIG_FILE);
+        onError(e.what(), ProgramErrorType::INVALID_CONFIG_FILE);
     }
     
      //////////////////////////////////////////
@@ -67,7 +66,7 @@ int main ()
     
     if ( !singleton() )
     {
-        onError("Ome process is running already.", program_errors::ALREADY_RUNNING);
+        onError("Ome process is running already.", ProgramErrorType::ALREADY_RUNNING);
     }
 
     //////////////////////////////////////////
@@ -94,19 +93,19 @@ int main ()
     }
     catch (std::invalid_argument & e)
     {
-        onError(e.what(), program_errors::RUNTIME_ERROR);
+        onError(e.what(), ProgramErrorType::RUNTIME_ERROR);
     }
     catch (std::runtime_error & e)
     {
-        onError(e.what(), program_errors::RUNTIME_ERROR);
+        onError(e.what(), ProgramErrorType::RUNTIME_ERROR);
     }
     catch (std::bad_alloc & )
     {
-        onError("Insufficient memory", program_errors::INSUFFICIENT_MEMORY);
+        onError("Insufficient memory", ProgramErrorType::INSUFFICIENT_MEMORY);
     }
     catch (...)
     {
-        onError("Unknown exception occured", program_errors::UNKNOWN_PROBLEM);
+        onError("Unknown exception occured", ProgramErrorType::UNKNOWN_PROBLEM);
     }
     //////////////////////////////////////////
     // Application exit
@@ -115,9 +114,11 @@ int main ()
     return 0;
 }
 
-void onError(const string& message, int exit_code)
+void onError(const string& message, ProgramErrorType errorType)
 {
     std::cerr << message << std::endl;
+    int exit_code = static_cast<int>(errorType);
+
     if ( utility::Logger::getInstance().isAlive() )
     {
         LOG_ERROR("Main thread", "Ending")
