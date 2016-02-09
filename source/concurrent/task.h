@@ -10,6 +10,8 @@
 
 namespace concurrent
 {
+
+using ReturnType = boost::optional<boost::any>;
     
 class Task : public memory::Aligned<>
 {
@@ -33,10 +35,14 @@ class Task : public memory::Aligned<>
             m_returnValue = m_callback();
         }
 
-        std::function<void*()> m_callback;
+        ReturnType getReturnValue()const
+        {
+            return m_returnValue;
+        }
+       
     private:
-        
-        boost::optional<boost::any> m_returnValue;
+        std::function<void*()> m_callback;
+        ReturnType m_returnValue;
 };
 
 using TaskPtr = std::unique_ptr<Task>;
