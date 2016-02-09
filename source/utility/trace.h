@@ -20,7 +20,7 @@ inline void trace(const char* message, ...)
 {
     auto message_length = std::strlen(message);
     //Only C++14 in the project , since they couldn`t make make_unique into C++11 in time...
-    std::unique_ptr<char> buffer = make_unique<char>(new  char[message_length]);
+    std::unique_ptr<char[]> buffer = make_unique<char[]>(new  char[message_length]);
     
     va_list args;
     va_start(args, message);
