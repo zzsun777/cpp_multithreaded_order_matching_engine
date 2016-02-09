@@ -75,7 +75,6 @@ void* Logger::run()
         else
         {
             concurrent::Thread::yield();
-             
         }
     }
 
