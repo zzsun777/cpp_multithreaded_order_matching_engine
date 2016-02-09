@@ -142,15 +142,17 @@ int Thread::bindThreadToCPUCore(int coreID)
     assert( m_started == true );
 
 #ifdef __linux__
-        cpu_set_t cpuset;
-        CPU_ZERO(&cpuset);
-        CPU_SET(coreID, &cpuset);
-        return pthread_setaffinity_np(m_threadID, sizeof(cpu_set_t), &cpuset);
+    cpu_set_t cpuset;
+    CPU_ZERO(&cpuset);
+    CPU_SET(coreID, &cpuset);
+    return pthread_setaffinity_np(m_threadID, sizeof(cpu_set_t), &cpuset);
 #elif _WIN32
     unsigned long mask = 1 << (coreID);
 
     if ( !SetThreadAffinityMask(m_threadHandle, mask) )
+    {
         return -1;
+    }
 
     return 0;
 #endif 
@@ -321,7 +323,7 @@ bool Thread::isHyperThreading()
     {
         switch (ptr->Relationship)
         {
-        case RelationProcessorCore:
+            case RelationProcessorCore:
                 processorCoreCount++;
                 // A hyperthreaded core supplies more than one logical processor.
                 logicalProcessorCount += countSetBits(ptr->ProcessorMask);
