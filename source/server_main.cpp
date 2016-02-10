@@ -1,6 +1,7 @@
 #include <exception>
 #include <iostream>
 #include <cstdlib>
+#include <type_traits>
 
 #include <utility/config_file.h>
 #include <utility/single_instance.h>
@@ -117,7 +118,7 @@ int main ()
 void onError(const string& message, ProgramErrorType errorType)
 {
     std::cerr << message << std::endl;
-    int exit_code = static_cast<int>(errorType);
+    auto exit_code = static_cast<std::underlying_type<ProgramErrorType>::type >(errorType);
 
     if ( utility::Logger::getInstance().isAlive() )
     {
