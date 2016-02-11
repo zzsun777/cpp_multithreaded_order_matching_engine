@@ -269,10 +269,10 @@ Source code and file/directory naming conventions :
 
 Source code indentations and new line usage :
 	
-	Space based no tabs ( This needs to be setup in VS )
+	4 spaces, no tabs ( This needs to be setup in VS )
 	By default Netbeans editor uses spaces for tabs
 	Needs to be set in VS2013 : https://msdn.microsoft.com/en-gb/library/ms165330(v=vs.90).aspx
-	New lines : Unix CR only ( \n ) , VS can handle it even though Windows is \r\n
+	New lines : Unix CR only ( \n ) , VisualStudio can handle it even though Windows is \r\n
 	
 Warning level used for GCC : -Wall
 
