@@ -84,7 +84,7 @@ In the libraries side :
 
 **5. Runtime dependencies :** For Windows, you have to install MSVC120 runtime : https://www.microsoft.com/en-gb/download/details.aspx?id=40784
 
-For Linux, you need GNU Lib C runtime and QuickFIX runtime.
+For Linux, you need GNU Libstd C++ 6 runtime and QuickFIX runtime.
 
 How to install Quickfix runtime on Linux ( tested on Ubuntu ) :
 
