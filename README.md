@@ -291,7 +291,7 @@ For MSVC 120 see https://msdn.microsoft.com/en-us/library/8c5ztk84(v=vs.120).asp
 
 Benchmarking & Microbenchmarking : Will add probes for SystemTap for Linux, might add performance test cases using existing GoogleTest project
 
-Concurrency : Lockfree containers , currently only SPSC bounded queue is lock free.
+Concurrency : MPMC and MPSC lockfree container implementations , currently only SPSC bounded queue is lock free.
 
 Memory : 3rd party memory allocators support : jemalloc, intelTBB, tcMalloc, Lockless. Currently the engine is using a set of CPU cache aligned allocators in "source/memory".
 
