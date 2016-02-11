@@ -95,7 +95,7 @@ int ConfigFile::getIntVaue(const string& attribute) const throw(std::invalid_arg
     return std::stoi(getStringValue(attribute));
 }
 
-vector<string> ConfigFile::getArray(const string& attribute) const throw(std::invalid_argument)
+vector<string> ConfigFile::getArray(const string& attribute)
 {
     vector<string> ret;
     string actualAttribute = attribute + "[]";
