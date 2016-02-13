@@ -16,7 +16,7 @@ void ConfigFile::loadFromFile(const string& fileName) throw(std::runtime_error)
     // For reusability
     m_dictionary.clear();
     
-    ifstream file(fileName);
+    ifstream file(fileName); // ifstream dtor also closes the file so no need for using a smart ptr to close the file
 
     if ( ! file.good())
     {

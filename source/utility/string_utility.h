@@ -21,8 +21,18 @@ inline bool replaceInString(std::string& str, const std::string& from, const std
     return true;
 }
 
+inline bool contains(const std::string& input_string, const std::string& search_string)
+{
+    if (input_string.find(search_string) != std::string::npos)
+    {
+        return true;
+    }
+
+    return false;
+}
+
 template <typename T>
-inline T lowercase(const T& input)
+inline T toLowercase(const T& input)
 {
     T ret = input;
     std::transform(ret.begin(), ret.end(), ret.begin(), ::tolower);
@@ -30,7 +40,7 @@ inline T lowercase(const T& input)
 }
 
 template <typename T>
-inline T uppercase(const T& input)
+inline T toUppercase(const T& input)
 {
     T ret = input;
     std::transform(ret.begin(), ret.end(), ret.begin(), ::toupper);
