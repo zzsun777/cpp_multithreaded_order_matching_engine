@@ -122,12 +122,20 @@ How to build the project on Windows  :
 
 **7. Server parameters and running the matching engine :** The engine executable looks for "ome.ini" file. Here is the list of things you can set :
 
-		- FILE_LOGGING_ENABLED							enables/disables logging
-		- CONSOLE_OUTPUT_ENABLED						enables/disables output to stdout
-		- CENTRAL_ORDER_BOOK_PIN_THREADS_TO_CORES		whether to pin threads of the threadpool to different CPU cores
-		- HYPER_THREADING								if hyperthreading is off and pinning is on ,then it will pin threads to only cores with an even index
-		- CENTRAL_ORDER_BOOK_QUEUE_SIZE_PER_THREAD		Queue size per worker thread in the central order book`s thread pool
-		- LOG_BUFFER_SIZE								Maximum buffer size for the logging system as it is built on a ring buffer.
+		FILE_LOGGING_ENABLED						enables/disables logging
+		CONSOLE_OUTPUT_ENABLED						enables/disables output to stdout
+		CENTRAL_ORDER_BOOK_PIN_THREADS_TO_CORES		whether to pin threads of the threadpool to different CPU cores
+		HYPER_THREADING								if hyperthreading is off and pinning is on ,then it will pin threads to only cores with an even index
+		CENTRAL_ORDER_BOOK_QUEUE_SIZE_PER_THREAD	Queue size per worker thread in the central order book`s thread pool
+		LOG_BUFFER_SIZE								Maximum buffer size for the logging system as it is built on a ring buffer.
+		
+You will also need to specify security symbols. The order matching engine`s thread pool will create a worker thread for each symbol.
+For specifying symbols in ini file, you need to use brackets as  below :
+
+		SYMBOL[]=MSFT
+		SYMBOL[]=AAPL
+		SYMBOL[]=INTC
+		SYMBOL[]=GOOGL
 		
 You will also need to have "quickfix_FIX42.xml" and "quickfix_server.cfg" files to be in the same directory with OME executable. You can find them in "bin" directory.
 
