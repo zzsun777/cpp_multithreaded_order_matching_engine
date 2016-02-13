@@ -35,6 +35,9 @@
 #include <cassert>
 #include <cstddef>
 #include <cctype>
+#include <cstdarg>
+#include <cstring>
+#include <cstdio>
 // STD STL
 #include <algorithm>
 #include <vector>

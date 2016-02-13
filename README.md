@@ -282,6 +282,10 @@ Source code indentations and new line usage :
 	Needs to be set in VS2013 : https://msdn.microsoft.com/en-gb/library/ms165330(v=vs.90).aspx
 	New lines : Unix CR only ( \n ) , VisualStudio can handle it even though Windows is \r\n
 	
+Inclusions : Using forward slash as it works for both Linux and Windows :
+
+		#include <concurrent/thread.h>
+	
 Warning level used for GCC : -Wall
 
 Warning level used for MSVC : /W3
