@@ -11,17 +11,23 @@
 namespace memory
 {
 
-void* alignedMalloc(std::size_t size, std::size_t alignment)
+void* alignedMalloc(std::size_t size, std::size_t alignment) throw(std::bad_alloc)
 {
+    void* ptr{nullptr};
 #ifdef __linux__
-    void* ptr = nullptr;
     posix_memalign(&ptr, alignment, size);
-    return ptr;
 #elif _WIN32
-    return _aligned_malloc(size, alignment);
+    ptr = _aligned_malloc(size, alignment);
 #endif
     //For just C++11 implementation with std::align
     //See http://en.cppreference.com/w/cpp/memory/align
+
+    if (ptr == nullptr)
+    {
+        throw std::bad_alloc();
+    }
+    
+    return ptr;
 }
 
 void alignedFree(void* ptr)
