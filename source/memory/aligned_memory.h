@@ -3,7 +3,7 @@
 
 #include "cache_line.h"
 #include <cstddef>
-#include <exception>
+#include <new>
 
 namespace memory
 {
