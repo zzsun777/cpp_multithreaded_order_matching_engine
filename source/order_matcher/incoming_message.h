@@ -21,7 +21,7 @@ class IncomingMessage : public memory::Aligned<>
         }
         
         IncomingMessage(Order order, IncomingMessageType type, const std::string& origClientOrderID="") 
-        : m_order{order}, m_originalOrderID{origClientOrderID}, m_type{type}
+        : m_order(order), m_originalOrderID(origClientOrderID), m_type(type)
         {
         }
 

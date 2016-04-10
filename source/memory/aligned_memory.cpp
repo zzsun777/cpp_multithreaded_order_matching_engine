@@ -30,7 +30,7 @@ void* alignedMalloc(std::size_t size, std::size_t alignment) throw(std::bad_allo
     return ptr;
 }
 
-void alignedFree(void* ptr)
+void alignedFree(void* ptr) noexcept
 {
 #ifdef __linux__
     free(ptr);

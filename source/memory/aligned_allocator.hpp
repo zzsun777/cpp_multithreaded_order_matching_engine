@@ -7,7 +7,7 @@
 #include <stdexcept>
 
 #include <compiler_portability/noexcept.h>
-#include "is_power_of_two.h"
+#include "memory_utilities.h"
 #include "cache_line.h"
 #include "aligned_memory.h"
 

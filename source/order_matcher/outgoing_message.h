@@ -20,7 +20,7 @@ class OutgoingMessage : public memory::Aligned<>
         {
         }
         
-        OutgoingMessage(Order order, OutgoingMessageType type, const std::string& message = "") : m_order{order}, m_type{type}, m_message{message}
+        OutgoingMessage(Order order, OutgoingMessageType type, const std::string& message = "") : m_order(order), m_type(type), m_message(message)
         {
         }
 

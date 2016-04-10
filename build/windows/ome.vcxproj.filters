@@ -146,9 +146,6 @@
     <ClInclude Include="..\..\source\compiler_portability\thread_local.h">
       <Filter>compiler_portability</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\memory\is_power_of_two.h">
-      <Filter>memory</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\source\utility\trace.h">
       <Filter>utility</Filter>
     </ClInclude>
@@ -187,6 +184,12 @@
     </ClInclude>
     <ClInclude Include="..\..\source\compiler_portability\ignored_warnings.h">
       <Filter>compiler_portability</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\compiler_portability\cpu_architecture.h">
+      <Filter>compiler_portability</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\memory\memory_utilities.h">
+      <Filter>memory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

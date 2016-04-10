@@ -104,6 +104,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\source\compiler_portability\alignas.h" />
     <ClInclude Include="..\..\source\compiler_portability\branch_predictor_hint.h" />
+    <ClInclude Include="..\..\source\compiler_portability\cpu_architecture.h" />
     <ClInclude Include="..\..\source\compiler_portability\fastcall.h" />
     <ClInclude Include="..\..\source\compiler_portability\force_inline.h" />
     <ClInclude Include="..\..\source\compiler_portability\ignored_warnings.h" />
@@ -128,7 +129,7 @@
     <ClInclude Include="..\..\source\memory\debugging\hardware_breakpoint.h" />
     <ClInclude Include="..\..\source\memory\debugging\hook_gnu_libc.h" />
     <ClInclude Include="..\..\source\memory\debugging\hook_ms_crt.h" />
-    <ClInclude Include="..\..\source\memory\is_power_of_two.h" />
+    <ClInclude Include="..\..\source\memory\memory_utilities.h" />
     <ClInclude Include="..\..\source\order_matcher\central_order_book.h" />
     <ClInclude Include="..\..\source\order_matcher\central_order_book_observer.h" />
     <ClInclude Include="..\..\source\order_matcher\central_order_book_visitor.h" />

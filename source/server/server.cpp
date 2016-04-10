@@ -28,7 +28,7 @@ using namespace order_matcher;
 
 Server::Server(const std::string& fixEngineConfigFile, bool pinThreadsToCores, int threadStackSize, bool hyperThreading, unsigned int queueSizePerThread, const std::vector<std::string>& symbols)
 throw(std::runtime_error)
-: m_fixEngineConfigFile{fixEngineConfigFile}
+: m_fixEngineConfigFile(fixEngineConfigFile)
 {
     if (!utility::doesFileExist(m_fixEngineConfigFile))
     {

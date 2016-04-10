@@ -297,6 +297,8 @@ For GCC see https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html
 
 For MSVC 120 see https://msdn.microsoft.com/en-us/library/8c5ztk84(v=vs.120).aspx
 
+MSVC120 C++11 Limitations : Curly brace initialisation at MILs and noexcept is not supported. For noexcept usage please see compiler_portability/noexcept.h .
+
 ===========================================================================
 
 **12. Todo List :**

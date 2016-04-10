@@ -3,7 +3,7 @@
 
 #include <cstddef>
 #include "cache_line.h"
-#include "is_power_of_two.h"
+#include "memory_utilities.h"
 #include "aligned_memory.h"
 
 namespace memory

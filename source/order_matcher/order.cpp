@@ -9,7 +9,7 @@ namespace order_matcher
 {
 
  Order::Order(string clientOrderID, string symbol, string owner, string target, OrderSide side, OrderType type, double price, long quantity)
-: m_clientOrderID{clientOrderID}, m_symbol{symbol}, m_owner{owner}, m_target{target}, m_side{side}, m_orderType{type}, m_price{price}, m_quantity{quantity}
+: m_clientOrderID(clientOrderID), m_symbol(symbol), m_owner(owner), m_target(target), m_side(side), m_orderType(type), m_price(price), m_quantity(quantity)
 {
     m_openQuantity = m_quantity;
     m_executedQuantity = 0;
